@@ -18,5 +18,5 @@ Une fois la fonctionalité implémentée, vérifier qu'elle n'a pas cassé le de
 * Si tout est bon, créer un pull request (cf la [Documentation de Bitbucket](https://confluence.atlassian.com/bitbucket/create-a-pull-request-945541466.html))
 
 ### Outils à disposition ###
-* [Bugtracker](https://bitbucket.org/ChocOignons/p3rv/issues), pour gérer les bugs et ouvrir des tâches
-* [Wiki](https://bitbucket.org/ChocOignons/p3rv/wiki/), pour documenter le code
+* [Bugtracker](https://bitbucket.org/ChocOignons2/p3rv/issues), pour gérer les bugs et ouvrir des tâches
+* [Wiki](https://bitbucket.org/ChocOignons2/p3rv/wiki/), pour documenter le code
