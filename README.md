@@ -6,6 +6,7 @@ Ce dépot contient les sources du projet Unity CONAV (aka P3RV).
 
 Lors du travail sur une nouvelle fonctionalité :
 
+* S'assurer d'être sur la branche dev-master (`git checkout dev-master`)
 * Créer une branche (`git checkout -b <nom>`)
 * Faire des commits **réguliers**
 * Faire un `git pull` puis un `git push` lorsque l'on est sûrs que les commits sont **fonctionnels** (*merci de ne pas push du code instable*)
