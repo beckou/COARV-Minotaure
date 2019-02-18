@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-public class UseMotor : MonoBehaviour
+public class Limit : MonoBehaviour
 {
-    
-    public Rigidbody Skull;
+    public HingeJoint joint;
+    JointLimits limits;
     // Start is called before the first frame update
     void Start()
     {
-        Skull = GetComponent<Rigidbody>();
+        joint = GetComponent<HingeJoint>();
+        limits = joint.limits;
     }
 
     // Update is called once per frame
@@ -19,7 +18,8 @@ public class UseMotor : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            Skull.AddForce(transform.forward * 250, ForceMode.VelocityChange);
+            limits.max = 45;
+            joint.limits = limits;
         }
     }
 }
