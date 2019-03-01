@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Indique si les objets enfants sont bien placés par rapport à l'objet qui porte ce script
+
 public class Disposition : MonoBehaviour
 {
     public int nbItems;  //Nombre de bibelots à considérer pour le puzzle
@@ -13,8 +15,8 @@ public class Disposition : MonoBehaviour
     private List<Transform> items = new List<Transform>();  //Liste des transforms des enfants de la table
     private List<bool> accomplishments = new List<bool>();  //Indique, pour chaque item, si l'objectif est atteint
 
-    //[SerializeField]
-    public bool goal;  //Réussite de l'énigme
+    [SerializeField]
+    private bool goal;  //Réussite de l'énigme
 
 
     // Start is called before the first frame update
