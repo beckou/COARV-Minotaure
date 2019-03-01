@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Limit : MonoBehaviour
 {
+    public bool openSkull = false;
     public HingeJoint joint;
     JointLimits limits;
     // Start is called before the first frame update
@@ -16,10 +17,14 @@ public class Limit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (openSkull)
         {
             limits.max = 45;
             joint.limits = limits;
+        }
+        if (Input.GetKeyDown("space"))
+        {
+            openSkull = true;
         }
     }
 }
