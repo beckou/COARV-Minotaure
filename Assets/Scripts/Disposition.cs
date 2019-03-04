@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Indique si les objets enfants sont bien placés par rapport à l'objet qui porte ce script
+//Indique si les objets enfants (les nb premiers) sont bien placés par rapport à l'objet qui porte ce script
 
 public class Disposition : MonoBehaviour
 {
@@ -17,6 +17,7 @@ public class Disposition : MonoBehaviour
 
     [SerializeField]
     private bool goal;  //Réussite de l'énigme
+    public bool GetGoal() { return goal; }
 
 
     // Start is called before the first frame update
@@ -40,6 +41,7 @@ public class Disposition : MonoBehaviour
         bool goalStatus = true;
         for (int i = 0; i < n; i++)
         {
+            //On vérifie, pour chaque objet, s'il est proche de la position visée à la tolérance près
             accomplishments[i] = ((items[i].localPosition - objectifs[i]).magnitude < tolerance);
             if (!accomplishments[i])
             {
