@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LighterBehavio : MonoBehaviour
+public class LighterBehavior : MonoBehaviour
 {
-    public GameObject Lighter;
     public GameObject Flamme;
-    bool flammeAllumee=false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    bool flammeAllumee; // false by default
 
+    private Transform _lighterTransform;
+    private GameObject _instance;
+	
+    // Start is called before the first frame update
+	void Start() {
+		_lighterTransform = transform.Find("Lighter");
+	}
+    
     // Update is called once per frame
     void Update()
     {
-        GameObject flamme;
         if (Input.GetMouseButtonDown(0))
         {
 
@@ -24,13 +25,13 @@ public class LighterBehavio : MonoBehaviour
             {
                 Vector3 hauteurFlamme = new Vector3(0, 0.18f, 0);
                 Quaternion rotationFlamme = new Quaternion(-0.5f, 0, 0, 0);
-                flamme = Instantiate(Flamme, Lighter.transform.position + hauteurFlamme, Lighter.transform.rotation * rotationFlamme);
+                _instance = Instantiate(Flamme, _lighterTransform.position + hauteurFlamme, _lighterTransform.rotation * rotationFlamme, transform);
                 flammeAllumee = true;
             }
 
             else
             {
-                Destroy(GameObject.Find("Lighter_Flame(Clone)"));
+                Destroy(_instance);
                 flammeAllumee = false;
             }
         }
