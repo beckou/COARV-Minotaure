@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Limit : MonoBehaviour
 {
+    public AudioClip openingSound;
     public GameObject missingEye;
-    public bool openSkull = false;
     public HingeJoint joint;
     JointLimits limits;
     Vector3 eyeSocket;
+    private AudioSource source;
     // Start is called before the first frame update
     void Start()
     {
+        source = GetComponent<AudioSource>();
         joint = GetComponent<HingeJoint>();
         limits = joint.limits;
         eyeSocket.x = 2;
@@ -22,14 +24,12 @@ public class Limit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (openSkull)
+        if (Vector3.Distance(eyeSocket, missingEye.transform.position) < 1 && limits.max == 0)
         {
+            source.PlayOneShot(openingSound, (float)10);
             limits.max = 45;
             joint.limits = limits;
-        }
-        if (Vector3.Distance(eyeSocket, missingEye.transform.position) < 1)//(Input.GetKeyDown("space"))
-        {
-            openSkull = true;
+
         }
     }
 }
