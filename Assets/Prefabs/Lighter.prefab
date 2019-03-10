@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4382071522870698}
+  - component: {fileID: 2891914558802078939}
   m_Layer: 0
-  m_Name: Lighter_Prefab
+  m_Name: Lighter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,6 +35,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2891914558802078939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179789650271714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b79a09e47ccf44f41bd4e7d99f0ccb11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Flamme: {fileID: 5487851562785314084, guid: f17e786da05ea9e48b6ae63da4f11d7c, type: 3}
 --- !u!1 &1207515084871104
 GameObject:
   m_ObjectHideFlags: 0
