@@ -779,7 +779,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 60822264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.52, y: 0, z: 9.15}
+  m_LocalPosition: {x: 7.401, y: 1.905, z: 8.887}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1441842233}
@@ -841,7 +841,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2796,6 +2796,14 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118658, guid: 2e27257e485b0f5458234b2b64761704, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130976, guid: 2e27257e485b0f5458234b2b64761704, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e27257e485b0f5458234b2b64761704, type: 3}
@@ -13165,7 +13173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: {fileID: 11400000, guid: 57aea0106bb0d3241b8cc3900ba62355, type: 2}
   ID: 0
-  weaponHelp: 188
+  weaponHelp: 276
 --- !u!1 &1589177900
 GameObject:
   m_ObjectHideFlags: 0
@@ -15141,7 +15149,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21584
+  m_Name: pb_Mesh58268
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
