@@ -9,6 +9,7 @@ TagManager:
   - Stone
   - Wall
   - Moving Wall
+  - Interactable
   layers:
   - Default
   - TransparentFX
