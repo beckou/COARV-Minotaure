@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/////////////// ce script est un bordel pour le moment 
 public class TorchInteraction : MonoBehaviour
 {
     public bool enigmaResolved = false;
@@ -12,7 +12,7 @@ public class TorchInteraction : MonoBehaviour
     private int torch4 = 0;
     private int torch = 0;
     // gameobjects we will need in the script
-    
+
     private GameObject torches;
     private GameObject torche1;
     private GameObject torche2;
@@ -22,6 +22,9 @@ public class TorchInteraction : MonoBehaviour
     private GameObject Light2;
     private GameObject Light3;
     private GameObject Light4;
+
+    public physicsPointer pointer;
+    private GameObject objectDetected; // to get the currentInteractable by the pointer
 
 
 
@@ -38,7 +41,7 @@ public class TorchInteraction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        torches = GameObject.Find("TorchesEnigme"); 
+        torches = GameObject.Find("TorchesEnigme");
         torche1 = getChildGameObject(torches, "torche1");
         torche2 = getChildGameObject(torches, "torche2");
         torche3 = getChildGameObject(torches, "torche3");
@@ -54,45 +57,97 @@ public class TorchInteraction : MonoBehaviour
 
 
         //Debug.Log(Light2.transform.localPosition);
-    
+
     }
-   
+
 
 
     // Update is called once per frame
     void Update()
     {
+        // getting the current ocject detected by the pointer in the scene to check if it matches with one of the torchs
+        objectDetected = pointer.currentInteractable.obj;
         // allumer la 1ere torche
-        if (Input.GetKeyDown(KeyCode.A))
+
+        if (objectDetected.name == ("torche1"))
         {
-            
+
+          if (!Light1.activeSelf)
+          {
             Light1.SetActive(true);
             torch++;
+          }
+          else
+          {
+              enigmaResolved = false;
+
+              Light1.SetActive(false);
+              Light2.SetActive(false);
+              Light3.SetActive(false);
+              Light4.SetActive(false);
+              torch1 = 0;
+              torch2 = 0;
+              torch3 = 0;
+              torch4 = 0;
+              torch = 0;
+          }
 
         }
         // allumer la 2eme torche
-        if (Input.GetKeyDown(KeyCode.B))
+        if (objectDetected.name == ("torche2"))
         {
-            
-            Light2.SetActive(true);
-            torch++;
-            //Debug.Log(Light2.activeSelf);
+          if (!Light2.activeSelf)
+          {
+             Light2.SetActive(true);
+             torch++;
+          }
+          else
+          {
+             enigmaResolved = false;
+
+             Light1.SetActive(false);
+             Light2.SetActive(false);
+             Light3.SetActive(false);
+             Light4.SetActive(false);
+             torch1 = 0;
+             torch2 = 0;
+             torch3 = 0;
+             torch4 = 0;
+             torch = 0;
+          }
         }
         // allumer la 3eme torche
-        if (Input.GetKeyDown(KeyCode.C))
+        if (objectDetected.name == ("torche3"))
         {
-            
-            Light3.SetActive(true);
-            torch++;
+
+          if (!Light2.activeSelf)
+          {
+             Light2.SetActive(true);
+             torch++;
+          }
+          else
+          {
+             enigmaResolved = false;
+
+             Light1.SetActive(false);
+             Light2.SetActive(false);
+             Light3.SetActive(false);
+             Light4.SetActive(false);
+             torch1 = 0;
+             torch2 = 0;
+             torch3 = 0;
+             torch4 = 0;
+             torch = 0;
+          }
         }
         // allumer la 4eme torche
-        if (Input.GetKeyDown(KeyCode.D))
+        if (objectDetected.name == ("torche4"))
         {
-            
+
             Light4.SetActive(true);
             torch++;
         }
-        // eteindre la 1ere torche qui implique l'éteinte de toutes les torches pour refaire l'opération 
+        // eteindre la 1ere torche qui implique l'éteinte de toutes les torches pour refaire l'opération
         if (Input.GetKeyDown(KeyCode.E))
         {
             enigmaResolved = false;
@@ -107,7 +162,7 @@ public class TorchInteraction : MonoBehaviour
             torch4 = 0;
             torch = 0;
         }
-        // eteindre la 2eme torche qui implique l'éteinte de toutes les torches pour refaire l'opération 
+        // eteindre la 2eme torche qui implique l'éteinte de toutes les torches pour refaire l'opération
         if (Input.GetKeyDown(KeyCode.F))
         {
             enigmaResolved = false;
@@ -121,7 +176,7 @@ public class TorchInteraction : MonoBehaviour
             torch4 = 0;
             torch = 0;
         }
-        // eteindre la 3eme torche qui implique l'éteinte de toutes les torches pour refaire l'opération 
+        // eteindre la 3eme torche qui implique l'éteinte de toutes les torches pour refaire l'opération
         if (Input.GetKeyDown(KeyCode.G))
         {
             enigmaResolved = false;
@@ -135,7 +190,7 @@ public class TorchInteraction : MonoBehaviour
             torch4 = 0;
             torch = 0;
         }
-        // eteindre la 4eme torche qui implique l'éteinte de toutes les torches pour refaire l'opération 
+        // eteindre la 4eme torche qui implique l'éteinte de toutes les torches pour refaire l'opération
         if (Input.GetKeyDown(KeyCode.H))
         {
             enigmaResolved = false;
@@ -160,12 +215,12 @@ public class TorchInteraction : MonoBehaviour
 
         if (Light1.activeSelf && !Light2.activeSelf && !Light3.activeSelf && !Light4.activeSelf)
         {
-            torch1 = torch; 
+            torch1 = torch;
         }
         if (Light1.activeSelf && Light2.activeSelf && !Light3.activeSelf && !Light4.activeSelf)
         {
-          
-            torch2 = torch; 
+
+            torch2 = torch;
         }
         if (Light1.activeSelf && Light2.activeSelf && Light3.activeSelf && !Light4.activeSelf)
         {
@@ -182,6 +237,6 @@ public class TorchInteraction : MonoBehaviour
         {
             enigmaResolved = true;
         }
-        
+
     }
 }
