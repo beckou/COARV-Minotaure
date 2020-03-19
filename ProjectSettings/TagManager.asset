@@ -17,6 +17,10 @@ TagManager:
   - vase
   - sword
   - discobole
+  - Point light1
+  - Point light2
+  - Point light3
+  - Point light4
   layers:
   - Default
   - TransparentFX
