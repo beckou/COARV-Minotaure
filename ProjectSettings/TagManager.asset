@@ -10,6 +10,13 @@ TagManager:
   - Wall
   - Moving Wall
   - Interactable
+  - projectile
+  - FxTemporaire
+  - table
+  - skull
+  - vase
+  - sword
+  - discobole
   layers:
   - Default
   - TransparentFX
@@ -19,7 +26,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Interactable
   - 
   - 
   - 

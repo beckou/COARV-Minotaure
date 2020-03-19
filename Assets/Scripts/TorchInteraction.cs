@@ -23,7 +23,7 @@ public class TorchInteraction : MonoBehaviour
     private GameObject Light3;
     private GameObject Light4;
 
-    public physicsPointer pointer;
+    public RayTracing raytracing;
     private GameObject objectDetected; // to get the currentInteractable by the pointer
 
 
@@ -65,13 +65,12 @@ public class TorchInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // getting the current ocject detected by the pointer in the scene to check if it matches with one of the torchs
-        objectDetected = pointer.currentInteractable.obj;
+
         // allumer la 1ere torche
 
-        if (objectDetected.name == ("torche1"))
+      /*  if (raytracing.PtLight == ("Point light1"))
         {
-
+            Debug.Log("torche1");
           if (!Light1.activeSelf)
           {
             Light1.SetActive(true);
@@ -94,7 +93,7 @@ public class TorchInteraction : MonoBehaviour
 
         }
         // allumer la 2eme torche
-        if (objectDetected.name == ("torche2"))
+        if (raytracing.PtLight == ("Point light2"))
         {
           if (!Light2.activeSelf)
           {
@@ -117,9 +116,9 @@ public class TorchInteraction : MonoBehaviour
           }
         }
         // allumer la 3eme torche
-        if (objectDetected.name == ("torche3"))
+        if (raytracing.PtLight == ("Point light3"))
         {
-
+            Debug.Log("torche3");
           if (!Light2.activeSelf)
           {
              Light2.SetActive(true);
@@ -141,12 +140,12 @@ public class TorchInteraction : MonoBehaviour
           }
         }
         // allumer la 4eme torche
-        if (objectDetected.name == ("torche4"))
+        if (raytracing.PtLight == ("Point light4"))
         {
 
             Light4.SetActive(true);
             torch++;
-        }
+        }*/
         // eteindre la 1ere torche qui implique l'éteinte de toutes les torches pour refaire l'opération
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -204,14 +203,14 @@ public class TorchInteraction : MonoBehaviour
             torch4 = 0;
             torch = 0;
         }
-        Debug.Log("torche 1 allumée en : ");
+        /*Debug.Log("torche 1 allumée en : ");
         Debug.Log(torch1);
         Debug.Log("torche 2 allumée en : ");
         Debug.Log(torch2);
         Debug.Log("torche 3 allumée en : ");
         Debug.Log(torch3);
         Debug.Log("torche 4 allumée en : ");
-        Debug.Log(torch4);
+        Debug.Log(torch4);*/
 
         if (Light1.activeSelf && !Light2.activeSelf && !Light3.activeSelf && !Light4.activeSelf)
         {

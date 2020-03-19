@@ -14,9 +14,10 @@ public class Disposition : MonoBehaviour
 
     private List<Transform> items = new List<Transform>();  //Liste des transforms des enfants de la table
     private List<bool> accomplishments = new List<bool>();  //Indique, pour chaque item, si l'objectif est atteint
-
+    private List<bool> itemSelected = new List<bool>(); //Indique quel item est sélectionné
     [SerializeField]
     private bool goal;  //Réussite de l'énigme
+
     public bool GetGoal() { return goal; }
 
 
@@ -31,7 +32,12 @@ public class Disposition : MonoBehaviour
             Transform tr = this.gameObject.transform.GetChild(i);
             items.Add(tr);
             accomplishments.Add(false);
+            itemSelected.Add(false);
         }
+        objectifs.Add(new Vector3(6.9f,1.1f,6.7f));
+        objectifs.Add(new Vector3(6.7f, 1.1f, 6.1f));
+        objectifs.Add(new Vector3(7.0f, 1.1f, 6.4f));
+        objectifs.Add(new Vector3(7.0f, 1.1f, 6.0f));
         goal = false;
     }
 
@@ -42,7 +48,7 @@ public class Disposition : MonoBehaviour
         for (int i = 0; i < n; i++)
         {
             //On vérifie, pour chaque objet, s'il est proche de la position visée à la tolérance près
-            accomplishments[i] = ((items[i].localPosition - objectifs[i]).magnitude < tolerance);
+            accomplishments[i] = (Vector3.Distance(items[i].localPosition,objectifs[i]) < tolerance);
             if (!accomplishments[i])
             {
                 goalStatus = false;
@@ -50,7 +56,53 @@ public class Disposition : MonoBehaviour
         }
 
         goal = goalStatus;
+
+        if(goal){
+            //Effet lorsqu'on réussi l'énigme
+            Debug.Log("WIIIIN");
+        }else{
+            MoveObjectsOnTable();
+        }
     }
 
 
+    void MoveObjectsOnTable(){
+        if(Input.GetMouseButton(0)){
+            bool itemAlreadySelected = false;
+            //On détermine si un objet est déjà sélectionné ou non
+            for(int i = 0; i < n; i++){
+                itemAlreadySelected = itemAlreadySelected || itemSelected[i];
+            }
+
+
+            for(int i = 0; i < n; i++){
+                //Si le raycast renvoie un objet et qu'aucun autre n'est sélectionné alors on sélectionne cet item
+                if (RayTracing.GetObject(items[i].gameObject.tag) != null && !itemAlreadySelected)
+                {
+                    itemSelected[i] = true;
+                }
+            }
+        }else{
+            //Lorsque la souris est relachée on déselectionne tous les objets
+            for (int i = 0; i < n; i++)
+            {
+                itemSelected[i] = false;
+            }
+        }
+
+
+        Vector3 newPosition = RayTracing.GetHitPosition("table");
+
+        if(Vector3.Distance(newPosition, new Vector3(0,0,0)) != 0){
+            //On est bien sur la table
+            for (int i = 0; i < n; i++)
+            {
+                if (itemSelected[i])
+                {
+                    Debug.Log("hey");
+                    items[i].position = newPosition;
+                }
+            }
+        }
+    }
 }

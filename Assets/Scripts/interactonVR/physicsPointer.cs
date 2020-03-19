@@ -16,7 +16,7 @@ public class physicsPointer : MonoBehaviour
 
     private LineRenderer lineRenderer = null;
     private List<Interactable> interactables = new List<Interactable>();
-    public Interactable currentInteractable = null; // this interactable will be called in the script TorchInteraction in order to check if it's one of the four torchs in the scene 
+    public Interactable currentInteractable = null; // this interactable will be called in other scripts 
     private FixedJoint joint = null;
 
     private void Awake()
