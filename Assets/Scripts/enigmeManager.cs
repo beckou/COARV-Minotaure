@@ -10,6 +10,7 @@ public class enigmeManager : MonoBehaviour
 
     public GameObject doorStatue; // pour pouvoir l'ouvrir
     public GameObject wallSkull; // pour pouvoir le détruire
+    public GameObject particles; // pour quand wallSkull explose
 
     private bool isTable = false; //enigme de la table
     private bool isTorch = false; //énigme lumières
@@ -21,12 +22,13 @@ public class enigmeManager : MonoBehaviour
         if (isTable && doorStatue.activeSelf){
             // énigme de la table réussie on ouvre la porte de la statue
             // destruction du mur (je ne sais pas faire donc je le désactive juste)
-            doorStatue.SetActive(false);
+            Destroy(doorStatue);
             Debug.Log("énigme de la table réussie");
         }
         if (isTorch && wallSkull.activeSelf){
             // énigme des statues réussie, on détruit wallSkull
             wallSkull.SetActive(false);
+            particles.SetActive(true);
             Debug.Log("énigme des torches réussie");
         }
         if (isTable && isTorch && isSkull){
