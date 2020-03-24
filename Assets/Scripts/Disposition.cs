@@ -17,9 +17,7 @@ public class Disposition : MonoBehaviour
     private List<bool> itemSelected = new List<bool>(); //Indique quel item est sélectionné
     [SerializeField]
     private bool goal;  //Réussite de l'énigme
-
-    public bool GetGoal() { return goal; }
-
+    public bool getGoal(){return goal;}
 
     // Start is called before the first frame update
 
@@ -57,10 +55,7 @@ public class Disposition : MonoBehaviour
 
         goal = goalStatus;
 
-        if(goal){
-            //Effet lorsqu'on réussi l'énigme
-            Debug.Log("WIIIIN");
-        }else{
+        if(!goal){
             MoveObjectsOnTable();
         }
     }

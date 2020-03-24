@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class MissingEye : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public GameObject missingEye;
-    public bool magnet = false;
-    public ConfigurableJoint joint;
+    private bool resolved = false;
+    public bool getGoal(){return resolved;}
+
+    private GameObject missingEye;
+    private bool magnet = false;
+    private ConfigurableJoint joint;
     JointDrive drive;
     Vector3 eyeSocket;
+
     void Start()
     {
         eyeSocket.x = 2;

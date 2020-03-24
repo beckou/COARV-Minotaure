@@ -4,30 +4,12 @@ using UnityEngine;
 
 public class TorchInteraction : MonoBehaviour
 {
-    public bool enigmaResolved = false;
+    private bool resolved = false;
+    public bool getGoal(){return resolved;}
 
-    private int torch1 = 0;
-    private int torch2 = 0;
-    private int torch3 = 0;
-    private int torch4 = 0;
-    private int torch = 0;
-    // gameobjects we will need in the script
-
-    private GameObject torches;
-    private GameObject torche1;
-    private GameObject torche2;
-    private GameObject torche3;
-    private GameObject torche4;
-    private GameObject Light1;
-    private GameObject Light2;
-    private GameObject Light3;
-    private GameObject Light4;
-
-
-    
-
-
-
+    private List<GameObject> torches;
+    private List<int> order; // ordre d'allumage des torches
+    private List<GameObject> lights;
 
     // get the child by its name and its parent gameobject
     static public GameObject getChildGameObject(GameObject go, string withName)
@@ -41,173 +23,63 @@ public class TorchInteraction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        torches = GameObject.Find("TorchesEnigme");
-        torche1 = getChildGameObject(torches, "torche1");
-        torche2 = getChildGameObject(torches, "torche2");
-        torche3 = getChildGameObject(torches, "torche3");
-        torche4 = getChildGameObject(torches, "torche4");
-        Light1 = getChildGameObject(torche1, "torch_Particle");
-        Light2 = getChildGameObject(torche2, "torch_Particle");
-        Light3 = getChildGameObject(torche3, "torch_Particle");
-        Light4 = getChildGameObject(torche4, "torch_Particle");
-        Light1.SetActive(false);
-        Light2.SetActive(false);
-        Light3.SetActive(false);
-        Light4.SetActive(false);
-
-
-        //Debug.Log(Light2.transform.localPosition);
-
+        torches = new List<GameObject>();
+        lights = new List<GameObject>();
+        order = new List<int>();
+        GameObject torchesEnigme = GameObject.Find("TorchesEnigme");
+        for (int i=0; i<torchesEnigme.transform.childCount; i++){
+            torches.Add(torchesEnigme.transform.GetChild(i).gameObject);
+            lights.Add(torches[i].transform.GetChild(0).gameObject);
+            lights[i].SetActive(false);
+        }
     }
 
+    private void checkLight(int i){
+        //on vérifie la lumière numero i
+        if (RayTracing.GetObject("Point light"+(i+1).ToString())){
+            Debug.Log("torche "+i.ToString());
+            if (!lights[i].activeSelf){
+                //si la torche est éteinte, alors on l'allume.
+                lights[i].SetActive(true);
+                order.Add(i);
+            }
+        }
+    }
 
+    private void checkEnigma(){
+        if (order.Count < lights.Count){
+            resolved = false;
+        } else {
+            List<int> expectation = new List<int>{0,1,2,3};
+            if (order == expectation){
+                resolved = true;
+            } else {
+                // les 4 torches sont allumées dans le mauvais ordre.
+                // on réinitialise donc l'énigme
+                resolved = false;
+                reset();
+            }
+        }
+    }
+
+    private void reset(){
+        // on repart à 0
+        order = new List<int>();
+        //on éteint les lumières
+        for (int i=0; i<lights.Count; i++){
+            lights[i].SetActive(false);
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
-
-        // allumer la 1ere torche
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0) && !resolved)
         {
-            
-            if (RayTracing.GetObject("Point light1"))
-            {
-                Debug.Log("torche1");
-                if (!Light1.activeSelf)
-                {
-                    Light1.SetActive(true);
-                    torch++;
-                }
-                else
-                {
-                    enigmaResolved = false;
-
-                    Light1.SetActive(false);
-                    Light2.SetActive(false);
-                    Light3.SetActive(false);
-                    Light4.SetActive(false);
-                    torch1 = 0;
-                    torch2 = 0;
-                    torch3 = 0;
-                    torch4 = 0;
-                    torch = 0;
-                }
-
+            for (int i=0; i<lights.Count; i++){
+                checkLight(i);
             }
-            // allumer la 2eme torche
-            if (RayTracing.GetObject("Point light2"))
-            {
-                Debug.Log("torche2");
-                if (!Light2.activeSelf)
-                {
-                    Light2.SetActive(true);
-                    torch++;
-                }
-                else
-                {
-                    enigmaResolved = false;
-
-                    Light1.SetActive(false);
-                    Light2.SetActive(false);
-                    Light3.SetActive(false);
-                    Light4.SetActive(false);
-                    torch1 = 0;
-                    torch2 = 0;
-                    torch3 = 0;
-                    torch4 = 0;
-                    torch = 0;
-                }
-            }
-            // allumer la 3eme torche
-            if (RayTracing.GetObject("Point light3"))
-            {
-                Debug.Log("torche3");
-                if (!Light3.activeSelf)
-                {
-                    Light3.SetActive(true);
-                    torch++;
-                }
-                else
-                {
-                    enigmaResolved = false;
-
-                    Light1.SetActive(false);
-                    Light2.SetActive(false);
-                    Light3.SetActive(false);
-                    Light4.SetActive(false);
-                    torch1 = 0;
-                    torch2 = 0;
-                    torch3 = 0;
-                    torch4 = 0;
-                    torch = 0;
-                }
-            }
-            // allumer la 4eme torche
-            if (RayTracing.GetObject("Point light4"))
-            {
-                Debug.Log("torche4");
-                if (!Light4.activeSelf)
-                {
-                    Light4.SetActive(true);
-                    torch++;
-                }
-                else
-                {
-                    enigmaResolved = false;
-
-                    Light1.SetActive(false);
-                    Light2.SetActive(false);
-                    Light3.SetActive(false);
-                    Light4.SetActive(false);
-                    torch1 = 0;
-                    torch2 = 0;
-                    torch3 = 0;
-                    torch4 = 0;
-                    torch = 0;
-                }
-            }
+            checkEnigma();
         }
-
-        // eteindre la 1ere torche qui implique l'éteinte de toutes les torches pour refaire l'opération
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            enigmaResolved = false;
-
-            Light1.SetActive(false);
-            Light2.SetActive(false);
-            Light3.SetActive(false);
-            Light4.SetActive(false);
-            torch1 = 0;
-            torch2 = 0;
-            torch3 = 0;
-            torch4 = 0;
-            torch = 0;
-        }
-
-        if (Light1.activeSelf && !Light2.activeSelf && !Light3.activeSelf && !Light4.activeSelf)
-        {
-            torch1 = torch;
-        }
-        if (Light1.activeSelf && Light2.activeSelf && !Light3.activeSelf && !Light4.activeSelf)
-        {
-
-            torch2 = torch;
-        }
-        if (Light1.activeSelf && Light2.activeSelf && Light3.activeSelf && !Light4.activeSelf)
-        {
-
-            torch3 = torch;
-        }
-        if (Light1.activeSelf && Light2.activeSelf && Light3.activeSelf && Light4.activeSelf)
-        {
-
-            torch4 = torch;
-        }
-
-        if (torch1 == 1 && torch2 == 2 && torch3 == 3 && torch4 == 4)
-        {
-            enigmaResolved = true;
-        }
-
     }
 }
