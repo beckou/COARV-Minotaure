@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class TorchInteraction : MonoBehaviour
 {
-    private bool resolved = false;
+    public GameObject particleBricks;
+    public GameObject wall;
+    public bool resolved = false;
     public bool getGoal(){return resolved;}
 
     private List<GameObject> torches;
@@ -26,8 +28,9 @@ public class TorchInteraction : MonoBehaviour
         torches = new List<GameObject>();
         lights = new List<GameObject>();
         order = new List<int>();
-        for (int i=0; i<transform.childCount; i++){
-            torches.Add(transform.GetChild(i).gameObject);
+        GameObject torchesEnigme = GameObject.Find("TorchesEnigme");
+        for (int i=0; i<torchesEnigme.transform.childCount; i++){
+            torches.Add(torchesEnigme.transform.GetChild(i).gameObject);
             lights.Add(torches[i].transform.GetChild(0).gameObject);
             lights[i].SetActive(false);
         }
@@ -48,10 +51,15 @@ public class TorchInteraction : MonoBehaviour
     private void checkEnigma(){
         if (order.Count < lights.Count){
             resolved = false;
+            
         } else {
             List<int> expectation = new List<int>{0,1,2,3};
-            if (order == expectation){
+            if (equal(order,expectation))
+            {
+                
                 resolved = true;
+                particleBricks.SetActive(true);
+                wall.SetActive(false);
             } else {
                 // les 4 torches sont allumées dans le mauvais ordre.
                 // on réinitialise donc l'énigme
@@ -70,6 +78,18 @@ public class TorchInteraction : MonoBehaviour
         }
     }
 
+    private bool equal(List<int> ordre, List<int> expectation)
+    {
+        bool eq = true;
+        for (int i = 0; i < ordre.Count; i++)
+        {
+            if (ordre[i] != expectation[i])
+            {
+                eq = false;
+            }
+        }
+        return eq;
+    }
     // Update is called once per frame
     void Update()
     {
