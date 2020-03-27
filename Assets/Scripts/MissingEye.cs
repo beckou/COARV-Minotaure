@@ -2,22 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// ce script est attaché à l'oeil en diamant
 public class MissingEye : MonoBehaviour
 {
     private bool resolved = false;
     public bool getGoal(){return resolved;}
 
-    private GameObject missingEye;
     private bool magnet = false;
     private ConfigurableJoint joint;
     JointDrive drive;
-    Vector3 eyeSocket;
+    private Vector3 eyeSocket;
 
     void Start()
     {
-        eyeSocket.x = 2;
-        eyeSocket.y = (float)0.3;
-        eyeSocket.z = (float)4.0;
+        eyeSocket = new Vector3(2f, 0.3f, 4f);
         joint = GetComponent<ConfigurableJoint>();
     }
 
@@ -35,11 +33,9 @@ public class MissingEye : MonoBehaviour
             joint.zDrive = drive;
         }
 
-
-        if (Vector3.Distance(eyeSocket,missingEye.transform.position)<3)//(Input.GetKeyDown("m"))
+        if (Vector3.Distance(eyeSocket,transform.position)<3) //(Input.GetKeyDown("m"))
         {
             magnet = true;
         }
     }
 }
-

@@ -26,9 +26,8 @@ public class TorchInteraction : MonoBehaviour
         torches = new List<GameObject>();
         lights = new List<GameObject>();
         order = new List<int>();
-        GameObject torchesEnigme = GameObject.Find("TorchesEnigme");
-        for (int i=0; i<torchesEnigme.transform.childCount; i++){
-            torches.Add(torchesEnigme.transform.GetChild(i).gameObject);
+        for (int i=0; i<transform.childCount; i++){
+            torches.Add(transform.GetChild(i).gameObject);
             lights.Add(torches[i].transform.GetChild(0).gameObject);
             lights[i].SetActive(false);
         }
