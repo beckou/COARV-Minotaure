@@ -3275,6 +3275,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 26aec004d42c0a640bf94c71b19365ec, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f5997804875ae5742b5619958df4af88, type: 2}
+    - target: {fileID: 9500000, guid: 26aec004d42c0a640bf94c71b19365ec, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26aec004d42c0a640bf94c71b19365ec, type: 3}
 --- !u!4 &518736798 stripped
@@ -13992,8 +14000,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e1f77ca42ec6740b9a5756c5dc55af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleBricks: {fileID: 600383956}
-  wall: {fileID: 1229284122}
   resolved: 0
 --- !u!1001 &1523497521
 PrefabInstance:

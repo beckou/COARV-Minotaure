@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class TorchInteraction : MonoBehaviour
 {
-    public GameObject particleBricks;
-    public GameObject wall;
+
     public bool resolved = false;
     public bool getGoal(){return resolved;}
 
@@ -58,8 +57,7 @@ public class TorchInteraction : MonoBehaviour
             {
                 
                 resolved = true;
-                particleBricks.SetActive(true);
-                wall.SetActive(false);
+               
             } else {
                 // les 4 torches sont allumées dans le mauvais ordre.
                 // on réinitialise donc l'énigme

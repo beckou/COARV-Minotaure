@@ -20,12 +20,14 @@ public class enigmeManager : MonoBehaviour
     void Update()
     {
         updateEnigmas();
-        if (isTable && doorStatue.activeSelf){
+        if (isTorch && doorStatue.activeSelf)
+        {
             // énigme de la table réussie on ouvre la porte de la statue
             // on ouvre la porte de la statue
             doorStatue.GetComponent<Animator>().SetTrigger("DoorATrigger");
         }
-        if (isTorch && wallSkull.activeSelf){
+        if (isTable && wallSkull.activeSelf)
+        {
             // énigme des statues réussie, on détruit wallSkull
             wallSkull.SetActive(false);
             particles.SetActive(true);
@@ -40,6 +42,6 @@ public class enigmeManager : MonoBehaviour
     private void updateEnigmas(){
         isTable = table.GetComponent<Disposition>().getGoal();
         isTorch = torch.GetComponent<TorchInteraction>().getGoal();
-        isTorch = diamondEye.GetComponent<MissingEye>().getGoal();
+        isSkull = diamondEye.GetComponent<MissingEye>().getGoal();
     }
 }
