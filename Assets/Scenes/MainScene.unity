@@ -9178,6 +9178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930bb0ef4a9ef4c47b4d79a1a8a66e82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nItemConsidered: 0
   goal: 0
 --- !u!64 &649620963
 MeshCollider:
@@ -10600,6 +10601,12 @@ Transform:
   m_Father: {fileID: 1441842233}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &978225054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7395232020606775280, guid: 58d976b11ed3597d48b9f61a9a4a2406,
+    type: 3}
+  m_PrefabInstance: {fileID: 377466793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1000187906
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16026,7 +16033,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   table: {fileID: 649620959}
   torch: {fileID: 1515860270}
-  diamondEye: {fileID: 0}
+  diamondEye: {fileID: 978225054}
   doorStatue: {fileID: 1123758164}
   wallSkull: {fileID: 1229284122}
   particles: {fileID: 600383956}
