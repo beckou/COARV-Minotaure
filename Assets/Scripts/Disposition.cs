@@ -20,7 +20,7 @@ public class Disposition : MonoBehaviour
 
     void Start()
     {
-        nItemConsidered = Mathf.Min(3, transform.childCount);
+        nItemConsidered = Mathf.Min(4, transform.childCount);
         for (int i = 0; i < nItemConsidered; i++)
         {
             //Remplissage de la liste des enfants de la table

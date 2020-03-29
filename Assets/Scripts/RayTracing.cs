@@ -6,7 +6,7 @@ public class RayTracing : MonoBehaviour
 {
     [SerializeField] private GameObject pointer;
     static LayerMask mask;
-    
+
 
 
     public static GameObject GetObject(string tag){
@@ -56,8 +56,6 @@ public class RayTracing : MonoBehaviour
     void Update(){
         //Affichage du pointer
         pointer.transform.position = GetPointerPosition();
-
-        
     }
 
 
