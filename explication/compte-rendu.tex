@@ -99,7 +99,9 @@ Une fois on résout cette énigme (dans le script EnigmeManager attaché au game
 \subsubsection{Énigme des diamants}
 Nous avons repris pour cette énigme l’ancien principe de base mais avons tenté de varier l’utilisation du script \verb!MissingEye! pour l’aide au positionnement de l’objet de l’énigme (un oeil en diamant). Nous avons également gardé le scénario.
 
-“L’énigme se présente ainsi: dans une pièce secrète, se trouve un crâne bovin avec un diamant en guise d’oeil gauche, l’autre orbite étant vide. Le joueur doit donc rechercher cet autre diamant pour le placer à sa place: sur l’orbite vide. Lorsque le diamant est suffisamment proche de l’orbite, il sera automatiquement attiré par sa place prédéfinie au sein de l’orbite à l’aide d’un customizable joint.”
+\begin{quote}
+    "L’énigme se présente ainsi: dans une pièce secrète, se trouve un crâne bovin avec un diamant en guise d’oeil gauche, l’autre orbite étant vide. Le joueur doit donc rechercher cet autre diamant pour le placer à sa place: sur l’orbite vide. Lorsque le diamant est suffisamment proche de l’orbite, il sera automatiquement attiré par sa place prédéfinie au sein de l’orbite à l’aide d’un customizable joint."
+\end{quote}
 
 Le script d’aide au positionnement est attaché à l’oeil “manquant”, soit l’oeil qui est caché dans le décor.
 
@@ -108,13 +110,13 @@ Le script d’aide au positionnement est attaché à l’oeil “manquant”, so
     \captionof{figure}{oeil \textit{manquant}, ici dans son emplacement}
 \end{center}
 
-On commence par positionner un 3ème oeil au bon endroit (au niveau du EyeSocket), qu’on rend inactif et qu’on cache donc pour le moment. La position de l’oeil est basée sur les données de position qu’on récupère dans la scène lorsqu’on place l’oeil au bon endroit. Cependant celles-ci demandent de se placer dans le bon repère : selon si on est dans celui de la scène ou de l’objet parent, on n’obtient pas le même résultat, ce qui rend compliqué l’obtention de l’endroit exact où l’on veut placer l’objet.
 Il faut ensuite sélectionner l’oeil manquant et on se sert pour ça du raycasting pour sélectionner l’objet à déplacer avec un clic maintenu sur la souris. Lorsque la position de l’objet passe sous une distance minimale de la position de l'emplacement d’arrivée, on veut pouvoir l’y placer directement en le lâchant.
+
 Nous avons essayé plusieurs méthodes ici. La première était celle utilisée l’année précédente, où à l’aide d’un joint on venait forcer la fixation de l’objet à son emplacement prévu. Cependant les tests n’étaient pas fructueux et le manque d’explications ne permettaient pas de poursuivre sur cette voie.
-Nous avons donc tenté de modifier simplement la position de l’objet tenu dans les mains lorsqu’il entrait dans la zone de fixation automatique. Mais ici nous avons rencontré beaucoup de problèmes liés à la position voulue de l’oeil et aux repères (comme expliqué précédemment).
+
 La dernière solution essayée fut celle qui utilise le 3ème oeil créé en début de script. En effet, on vient cacher cet oeil et on manipule celui sur lequel est appliqué le script et qui est, lui, caché dans la pièce à l’origine. Dès lors que l’oeil manipulé entre dans la zone de fixation automatique, on rend actif le 3ème oeil et on supprime celui qui est manipulé, donnant l’illusion d’une fixation “magnet”.
 
-Cependant le résultat final permettait bien d’aller jusqu’à la destruction de l’oeil dans la zone souhaitée, mais l’oeil caché n’apparaissait pas sur le crâne. Il reste donc des problèmes dans la gestion de la position finale.
+Nous avons donc tenté et réussi finalement à modifier simplement la position de l’objet tenu dans les mains lorsqu’il entrait dans la zone de fixation automatique en faisant un changement de parents. Tout est fonctionnel dans la scène \verb!eyeEnigma! sauf la manipulation avec le pointeur et le raycasting. Il n'est à changer que la manipulation de l'oeil. 
 
 \subsubsection{Énigme du poème}
 Nous avons implémenté le script “TorchInteraction” pour assurer l’interaction de l’utilisateur avec les torches. On a toujours gardé le même scénario déjà prévu.

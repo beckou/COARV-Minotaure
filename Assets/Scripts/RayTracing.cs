@@ -39,7 +39,7 @@ public class RayTracing : MonoBehaviour
                 return hit.point;
             }
         }
-        return new Vector3(0,0,0);
+        return Vector3.zero;
     }
 
     private Vector3 GetPointerPosition(){

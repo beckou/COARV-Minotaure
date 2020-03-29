@@ -2279,6 +2279,16 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: -1.999999
       objectReference: {fileID: 0}
+    - target: {fileID: 7400546183988598226, guid: 58d976b11ed3597d48b9f61a9a4a2406,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400546183988598226, guid: 58d976b11ed3597d48b9f61a9a4a2406,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 39.44
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58d976b11ed3597d48b9f61a9a4a2406, type: 3}
 --- !u!4 &377466794 stripped

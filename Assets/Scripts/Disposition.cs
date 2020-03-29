@@ -8,7 +8,7 @@ public class Disposition : MonoBehaviour
 {
     private List<Vector3> objectifs = new List<Vector3>();   //Positions à atteindre
     private float tolerance;  //Marge d'erreur pour le placement des objets
-    private int nItemConsidered; //Pour debugger, on ne peut placer que n objets pour résoudre l'énigme
+    public int nItemConsidered; //Pour debugger, on ne peut placer que n objets pour résoudre l'énigme
     private List<Transform> items = new List<Transform>();  //Liste des transforms des enfants de la table
     private List<bool> accomplishments = new List<bool>();  //Indique, pour chaque item, si l'objectif est atteint
     private List<bool> itemSelected = new List<bool>(); //Indique quel item est sélectionné
@@ -20,7 +20,7 @@ public class Disposition : MonoBehaviour
 
     void Start()
     {
-        nItemConsidered = Mathf.Min(4, transform.childCount);
+        nItemConsidered = Mathf.Min(3, transform.childCount); // on pourra passer à 4 quand le probleme du crane qui s'enfonce a moitiée dans le sol sera réglé.
         for (int i = 0; i < nItemConsidered; i++)
         {
             //Remplissage de la liste des enfants de la table
@@ -34,28 +34,31 @@ public class Disposition : MonoBehaviour
         objectifs.Add(new Vector3(0.1f, 0.7f, 0.2f)); //discobole
         objectifs.Add(new Vector3(-0.4f, 0.7f, 0.1f)); //skull
         goal = false;
-        tolerance = 0.02f*nItemConsidered;
+        tolerance = 0.08f*nItemConsidered;
     }
 
     // Update is called once per frame
     void Update()
     {
-        bool goalStatus = true;
-        for (int i = 0; i < nItemConsidered; i++)
-        {
-            //On vérifie, pour chaque objet, s'il est proche de la position visée à la tolérance près
-            accomplishments[i] = (Vector3.Distance(items[i].localPosition,objectifs[i]) < tolerance);
-            if (itemSelected[i]) {Debug.Log(items[i].localPosition + " : " + (items[i].localPosition - objectifs[i]).magnitude);}
-            if (!accomplishments[i])
+        if (!goal){
+            bool goalStatus = true;
+            for (int i = 0; i < nItemConsidered; i++)
             {
-                goalStatus = false;
+                //On vérifie, pour chaque objet, s'il est proche de la position visée à la tolérance près
+                accomplishments[i] = (Vector3.Distance(items[i].localPosition,objectifs[i]) < tolerance);
+                if (itemSelected[i]) {Debug.Log(items[i].localPosition + " : " + (items[i].localPosition - objectifs[i]).magnitude);}
+                if (!accomplishments[i])
+                {
+                    goalStatus = false;
+                }
             }
-        }
+            goal = goalStatus;
 
-        goal = goalStatus;
-
-        if(!goal){
             MoveObjectsOnTable();
+
+            if (goal){
+                Debug.Log("énigme table réussie !");
+            }
         }
     }
 
@@ -87,7 +90,7 @@ public class Disposition : MonoBehaviour
 
         Vector3 newPosition = RayTracing.GetHitPosition("table");
 
-        if(Vector3.Distance(newPosition, new Vector3(0,0,0)) != 0){
+        if((newPosition-Vector3.zero).magnitude > 0){
             //On est bien sur la table
             for (int i = 0; i < nItemConsidered; i++)
             {
