@@ -1,41 +1,54 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 // ce script est attaché à l'oeil en diamant
 public class MissingEye : MonoBehaviour
 {
-    private bool resolved = false;
-    public bool getGoal(){return resolved;}
+    private bool goal = false;
+    public bool getGoal(){return goal;}  //Permet de gérer la réussite de l'énigme
+    private GameObject skull;
 
     private bool magnet = false;
-    private ConfigurableJoint joint;
-    JointDrive drive;
-    private Vector3 eyeSocket;
+    private Vector3 eyeSocket = new Vector3(2f, 2f, 1.4f);  //Position souhaitée de l'oeil (repérée dans la scène, à modifier potentiellement)
+    private float threshold = 1f;
+    private float armLength = 2f; // correspond a la distance a laquelle on manipule le diamant
 
-    void Start()
-    {
-        eyeSocket = new Vector3(2f, 0.3f, 4f);
-        joint = GetComponent<ConfigurableJoint>();
+    void Start(){
+        skull = transform.parent.gameObject;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (magnet)
-        {
-            drive.maximumForce = 100000000000000000;
-            drive.positionSpring = 100;
-            joint.angularXDrive = drive;
-            joint.angularYZDrive = drive;
-            joint.xDrive = drive;
-            joint.yDrive = drive;
-            joint.zDrive = drive;
+        if (!goal){
+            if (magnet)
+            {
+                transform.SetParent(skull.transform);
+                transform.localRotation = Quaternion.Euler(45, 0, 0);
+                transform.localPosition = eyeSocket;
+                GetComponent<Rigidbody>().useGravity = false;
+                goal = true;    //Permet de gérer la réussite de l'énigme
+            }
+
+            if (Vector3.Distance(eyeSocket,transform.position)<threshold)
+            {
+                magnet = true;
+            }
+
+            MoveEye();
+        }
+    }
+
+    void MoveEye(){
+        if (Input.GetMouseButtonDown(0) && RayTracing.GetObject(gameObject.tag) == gameObject){
+            // si le diamant est sélectionné
+            GetComponent<Rigidbody>().useGravity = false;
+            transform.SetParent(Camera.main.transform);
+        }
+        if (Input.GetMouseButtonUp(0)){
+            transform.SetParent(skull.transform); // il retrouve son père d'origine
+            GetComponent<Rigidbody>().useGravity = true;
         }
 
-        if (Vector3.Distance(eyeSocket,transform.position)<3) //(Input.GetKeyDown("m"))
-        {
-            magnet = true;
-        }
     }
 }
