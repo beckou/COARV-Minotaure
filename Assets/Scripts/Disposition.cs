@@ -7,7 +7,7 @@ using UnityEngine;
 public class Disposition : MonoBehaviour
 {
     private List<Vector3> objectifs = new List<Vector3>();   //Positions à atteindre
-    public float tolerance;  //Marge d'erreur pour le placement des objets
+    private float tolerance;  //Marge d'erreur pour le placement des objets
     private int nItemConsidered; //Pour debugger, on ne peut placer que n objets pour résoudre l'énigme
     private List<Transform> items = new List<Transform>();  //Liste des transforms des enfants de la table
     private List<bool> accomplishments = new List<bool>();  //Indique, pour chaque item, si l'objectif est atteint
@@ -34,7 +34,7 @@ public class Disposition : MonoBehaviour
         objectifs.Add(new Vector3(0.1f, 0.7f, 0.2f)); //discobole
         objectifs.Add(new Vector3(-0.4f, 0.7f, 0.1f)); //skull
         goal = false;
-        tolerance = 0.05f*nItemConsidered;
+        tolerance = 0.02f*nItemConsidered;
     }
 
     // Update is called once per frame
@@ -93,8 +93,6 @@ public class Disposition : MonoBehaviour
             {
                 if (itemSelected[i])
                 {
-                    Debug.Log("objet sélectionné : " + items[i].gameObject.name);
-                    Debug.Log("distance à objectif : " + (items[i].position - objectifs[i]).magnitude);
                     items[i].position = newPosition;
                 }
             }
