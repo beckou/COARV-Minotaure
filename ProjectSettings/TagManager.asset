@@ -3,24 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Triggerer
-  - Grass
-  - Stone
-  - Wall
-  - Moving Wall
-  - Interactable
-  - projectile
-  - FxTemporaire
-  - table
-  - skull
-  - vase
-  - sword
-  - discobole
-  - Point light1
-  - Point light2
-  - Point light3
-  - Point light4
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -30,7 +13,6 @@ TagManager:
   - UI
   - 
   - 
-  - Interactable
   - 
   - 
   - 
@@ -43,17 +25,18 @@ TagManager:
   - 
   - 
   - 
-  - MovableObject
-  - Ragdoll
-  - RemotePlayer
-  - IgnoreBullets
-  - Enemy
-  - Pickup
-  - Trigger
-  - MovingPlatform
-  - Debris
-  - LocalPlayer
-  - Weapon
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
