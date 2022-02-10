@@ -44,4 +44,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/UFPS/Multiplayer/Content/Levels/Examples/UFPSMP_TestMap.unity
     guid: 00000000000000000000000000000000
-  m_configObjects: {}
+  m_configObjects:
+    Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: e3f19c47e47dd4545b7a7c9a13cdcf3b,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: b8b6185eb530b8d49aa86beefe135edd,
+      type: 2}
