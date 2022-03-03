@@ -2675,6 +2675,10 @@ PrefabInstance:
       propertyPath: m_Shadows.m_Strength
       value: 0.43
       objectReference: {fileID: 0}
+    - target: {fileID: 199310585865318040, guid: 29a092a99963baa4ea9cf8a5de412734, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29a092a99963baa4ea9cf8a5de412734, type: 3}
 --- !u!4 &392889466 stripped
@@ -14626,7 +14630,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515860270}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68e1f77ca42ec6740b9a5756c5dc55af, type: 3}
   m_Name: 

@@ -15,7 +15,6 @@ public class TorchInteraction : MonoBehaviour
     // get the child by its name and its parent gameobject
     static public GameObject getChildGameObject(GameObject go, string withName)
     {
-        //Author: Isaac Dart, June-13.
         Transform[] ts = go.GetComponentsInChildren<Transform>();
         foreach (Transform t in ts) if (t.gameObject.name == withName) return t.gameObject;
         return null;
@@ -27,9 +26,9 @@ public class TorchInteraction : MonoBehaviour
         torches = new List<GameObject>();
         lights = new List<GameObject>();
         order = new List<int>();
-        GameObject torchesEnigme = GameObject.Find("TorchesEnigme");
-        for (int i=0; i<torchesEnigme.transform.childCount; i++){
-            torches.Add(torchesEnigme.transform.GetChild(i).gameObject);
+        //GameObject torchesEnigme = GameObject.Find("TorchesEnigme");
+        for (int i=0; i<transform.childCount; i++){
+            torches.Add(transform.GetChild(i).gameObject);
             lights.Add(torches[i].transform.GetChild(0).gameObject);
             lights[i].SetActive(false);
         }
@@ -55,7 +54,7 @@ public class TorchInteraction : MonoBehaviour
             List<int> expectation = new List<int>{0,1,2,3};
             if (equal(order,expectation))
             {
-                
+                //on regarde si l'ordre de l'allumage est égale à la solution
                 resolved = true;
                
             } else {
@@ -76,27 +75,29 @@ public class TorchInteraction : MonoBehaviour
         }
     }
 
+    //Renvoie false dès qu'il y a un élément qui n'est pas dans l'ordre, renvoir true si tout est dans l'ordre
     private bool equal(List<int> ordre, List<int> expectation)
     {
-        bool eq = true;
-        for (int i = 0; i < ordre.Count; i++)
+        int i = 0;
+        while (ordre[i] == expectation[i] && i<ordre.Count)
         {
-            if (ordre[i] != expectation[i])
-            {
-                eq = false;
-            }
+            i++;
+            Debug.Log(i);
         }
-        return eq;
+        return (i == order.Count);
     }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !resolved)
+        Debug.Log(Input.GetJoystickNames());
+        /*if (Input.GetJoystickNames() && !resolved)//Remplacer le Input.GetMouseButtonDown(0)
         {
+            Debug.Log("Joystick marche");
             for (int i=0; i<lights.Count; i++){
                 checkLight(i);
             }
             checkEnigma();
-        }
+        }*/
     }
 }

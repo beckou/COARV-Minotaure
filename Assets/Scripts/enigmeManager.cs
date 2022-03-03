@@ -22,8 +22,7 @@ public class enigmeManager : MonoBehaviour
         updateEnigmas();
         if (isTorch && doorStatue.activeSelf)
         {
-            // énigme de la table réussie on ouvre la porte de la statue
-            // on ouvre la porte de la statue
+            // énigme de la torche réussie on ouvre la porte de la statue
             doorStatue.GetComponent<Animator>().SetTrigger("DoorATrigger");
         }
         if (isTable && wallSkull.activeSelf)
