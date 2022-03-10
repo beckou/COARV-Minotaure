@@ -16,8 +16,6 @@ public class Disposition : MonoBehaviour
     private bool goal;  //Réussite de l'énigme
     public bool getGoal(){return goal;}
 
-    // Start is called before the first frame update
-
     void Start()
     {
         nItemConsidered = Mathf.Min(3, transform.childCount); // on pourra passer à 4 quand le probleme du crane qui s'enfonce a moitiée dans le sol sera réglé.
@@ -37,11 +35,10 @@ public class Disposition : MonoBehaviour
         tolerance = 0.08f*nItemConsidered;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!goal){
-            bool goalStatus = true;
+            bool goalStatus = true; //sert à changer la valeur de goal
             for (int i = 0; i < nItemConsidered; i++)
             {
                 //On vérifie, pour chaque objet, s'il est proche de la position visée à la tolérance près
