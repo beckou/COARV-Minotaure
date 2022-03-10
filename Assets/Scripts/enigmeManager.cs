@@ -20,12 +20,21 @@ public class enigmeManager : MonoBehaviour
     void Update()
     {
         updateEnigmas();
+<<<<<<< HEAD
+=======
+        //if (isTorch && doorStatue.activeSelf)
+        //{
+        //    // énigme de la torche réussie on ouvre la porte de la statue
+        //    doorStatue.GetComponent<Animator>().SetTrigger("DoorATrigger");
+        //}
+>>>>>>> TableInteraction
         if (isTable && wallSkull.activeSelf)
         {
             // énigme de la table réussie, on détruit wallSkull
             wallSkull.SetActive(false);
             particles.SetActive(true);
         }
+<<<<<<< HEAD
         if (isSkull && doorStatue.activeSelf)
         {
             // énigme du crâne réussie, on ouvre la porte de la statue pour accéeder au poème
@@ -36,11 +45,23 @@ public class enigmeManager : MonoBehaviour
             // on ouvre la porte finale
             finalDoor.GetComponent<Animator>().SetTrigger("DoorATrigger");
         }
+=======
+        //if (isTable && isTorch && isSkull){
+        //    // les trois énigmes ont été réussies !
+        //    // on ouvre la porte finale
+        //    finalDoor.GetComponent<Animator>().SetTrigger("DoorATrigger");
+        //}
+>>>>>>> TableInteraction
     }
 
     private void updateEnigmas(){
         isTable = table.GetComponent<Disposition>().getGoal();
+<<<<<<< HEAD
         isSkull = diamondEye.GetComponent<MissingEye>().getGoal();
         isTorch = torch.GetComponent<TorchInteraction>().getGoal();
+=======
+        //isTorch = torch.GetComponent<TorchInteraction>().getGoal();
+        //isSkull = diamondEye.GetComponent<MissingEye>().getGoal();
+>>>>>>> TableInteraction
     }
 }

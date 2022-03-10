@@ -27,14 +27,16 @@ public class Disposition : MonoBehaviour
     void Update()
     {
         if (!goal){
-            goal = true;
+            
             XRController manetteD = MainD.GetComponent<XRController>();
             XRController manetteG = MainG.GetComponent<XRController>();
             if (!manetteD.selectInteractionState.active && !manetteG.selectInteractionState.active)
             {
+                goal = true;
                 for (int i = 0; i < goalPos.Length; i++)
                 {
-                    if (gameObject.transform.GetChild(i).localPosition != goalPos[i])
+                    Debug.Log((gameObject.transform.GetChild(i).localPosition - goalPos[i]).magnitude);
+                    if ((gameObject.transform.GetChild(i).localPosition - goalPos[i]).magnitude > tolerance)
                     {
                         goal = false;
                     }
