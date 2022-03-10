@@ -2211,7 +2211,7 @@ GameObject:
   - component: {fileID: 307274435}
   - component: {fileID: 307274434}
   m_Layer: 0
-  m_Name: Direct Interactor (1)
+  m_Name: Main Gauche Grab (Direct Interactor)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3232,6 +3232,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 489720, guid: c6dba36d30ee07d438cbe8bf654e2ef0, type: 3}
   m_PrefabInstance: {fileID: 1238432701}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &470326628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470326626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f2da32f67a6fe146b568eaabdfd6add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainD: {fileID: 1277155846}
+  mainG: {fileID: 307274432}
 --- !u!65 &470326631
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4273,7 +4287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f2da32f67a6fe146b568eaabdfd6add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  main: {fileID: 1277155846}
+  mainD: {fileID: 1277155846}
+  mainG: {fileID: 307274432}
 --- !u!1001 &551300663
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11876,6 +11891,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3283253271771583323, guid: 9d8ce9b238983334e81d32eb963107a3, type: 3}
   m_PrefabInstance: {fileID: 1299238942}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1150701222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150701220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f2da32f67a6fe146b568eaabdfd6add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainD: {fileID: 1277155846}
+  mainG: {fileID: 307274432}
 --- !u!136 &1150701224
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13064,7 +13093,7 @@ GameObject:
   - component: {fileID: 1277155849}
   - component: {fileID: 1277155848}
   m_Layer: 0
-  m_Name: Direct Interactor
+  m_Name: Main Droite Grab (Direct Interactor)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14664,7 +14693,7 @@ GameObject:
   - component: {fileID: 1518218592}
   - component: {fileID: 1518218596}
   m_Layer: 0
-  m_Name: Ray Interactor
+  m_Name: Main Droite TP (Ray Interactor)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
