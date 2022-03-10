@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TorchInteraction : MonoBehaviour
 {
-
     public bool resolved = false;
     public bool getGoal(){return resolved;}
 
@@ -20,7 +19,6 @@ public class TorchInteraction : MonoBehaviour
         return null;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         torches = new List<GameObject>();
