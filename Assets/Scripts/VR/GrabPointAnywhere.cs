@@ -11,7 +11,7 @@ public class GrabPointAnywhere : MonoBehaviour
     {
         if (other == mainD.GetComponent<SphereCollider>())
         {
-            Debug.Log("Détecté");
+            //Debug.Log("Détecté");
             GameObject fils = gameObject.transform.GetChild(0).gameObject;
             Vector3 positionMainRefObjet = gameObject.transform.InverseTransformPoint(mainD.transform.position);
             Quaternion RotationMain = mainD.transform.rotation;
@@ -19,9 +19,9 @@ public class GrabPointAnywhere : MonoBehaviour
             fils.transform.localPosition = positionMainRefObjet;
             fils.transform.rotation = RotationMain;
         }
-        if (other == mainG.GetComponent<SphereCollider>())
+        else if (other == mainG.GetComponent<SphereCollider>())
         {
-            Debug.Log("Détecté");
+            //Debug.Log("Détecté");
             GameObject fils = gameObject.transform.GetChild(0).gameObject;
             Vector3 positionMainRefObjet = gameObject.transform.InverseTransformPoint(mainG.transform.position);
             Quaternion RotationMain = mainG.transform.rotation;
