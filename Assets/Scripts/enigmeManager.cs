@@ -31,7 +31,7 @@ public class enigmeManager : MonoBehaviour
 
     void Update()
     {
-        //updateEnigmas();
+        updateEnigmas();
         if (isTable && wallSkull.activeSelf)
         {
             // énigme de la table réussie, on détruit wallSkull
@@ -55,10 +55,11 @@ public class enigmeManager : MonoBehaviour
         }
         if (isTable && isSkull && isTorch && isChest)
         {
-            if (positiontranslationY <= limitTranslationY)
+            // on ouvre la dernière porte en la translatant vers le haut
+            if (finalDoor.transform.localPosition.y <= limitTranslationY)
             {
-                positiontranslationY += Time.deltaTime * translationSpeed;
-                finalDoor.transform.localPosition = new Vector3(finalDoor.transform.localPosition.x, positiontranslationY, finalDoor.transform.localPosition.z);
+                positiontranslationY = Time.deltaTime * translationSpeed;
+                finalDoor.transform.localPosition = new Vector3(finalDoor.transform.localPosition.x, finalDoor.transform.localPosition.y + positiontranslationY, finalDoor.transform.localPosition.z);
             }
         }
     }

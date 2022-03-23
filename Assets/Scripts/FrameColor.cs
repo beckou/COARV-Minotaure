@@ -14,13 +14,13 @@ public class FrameColor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Defaultmaterial = transform.GetComponent<Material>();
+        Defaultmaterial = GetComponent<Renderer>().material;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Defaultmaterial == MaterialSolution)
+        if (GetComponent<Renderer>().material.color == MaterialSolution.color)
         {
             goal = true;
         }
@@ -30,8 +30,19 @@ public class FrameColor : MonoBehaviour
     {
         if (other.gameObject.transform.tag == "Sphere")
         {
-            other.gameObject.transform.parent = transform;
-            Defaultmaterial = other.gameObject.transform.GetComponent<Material>();
+            other.gameObject.transform.parent = GameObject.Find("Wall Arch").transform;
+            other.attachedRigidbody.useGravity = false;
+            other.transform.position = GetComponent<Collider>().bounds.center;
+            GetComponent<Renderer>().material = other.gameObject.GetComponent<Renderer>().material;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.transform.tag == "Sphere")
+        {
+            other.attachedRigidbody.useGravity = true;
+            GetComponent<Renderer>().material = Defaultmaterial;
         }
     }
 }
