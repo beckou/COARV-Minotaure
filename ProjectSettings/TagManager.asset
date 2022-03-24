@@ -3,7 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Wall
+  - Interactable
+  - Point light2
+  - Point light1
+  - table
+  - Point light4
+  - sword
+  - discobole
+  - skull
+  - Point light3
+  - vase
+  - Sphere
   layers:
   - Default
   - TransparentFX
