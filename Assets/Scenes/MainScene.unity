@@ -1168,6 +1168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 135150326}
   - component: {fileID: 135150325}
+  - component: {fileID: 135150327}
   m_Layer: 0
   m_Name: Enigme Manager
   m_TagString: Untagged
@@ -1188,12 +1189,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   table: {fileID: 649620959}
-  torch: {fileID: 0}
-  diamondEye: {fileID: 0}
+  torch: {fileID: 1515860270}
+  diamondEye: {fileID: 588670864}
   doorStatue: {fileID: 0}
   wallSkull: {fileID: 1229284122}
   particles: {fileID: 600383956}
   finalDoor: {fileID: 0}
+  isTable: 0
+  isTorch: 0
+  isSkull: 0
 --- !u!4 &135150326
 Transform:
   m_ObjectHideFlags: 0
@@ -1208,6 +1212,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &135150327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135150324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75232aa4a9ca24743bd7739d872a6758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  torchesEnigme: {fileID: 1515860270}
+  rayG: {fileID: 268654799}
+  complete: 0
 --- !u!43 &137081799
 Mesh:
   m_ObjectHideFlags: 0
@@ -1814,12 +1833,12 @@ GameObject:
   m_Component:
   - component: {fileID: 268654800}
   - component: {fileID: 268654805}
+  - component: {fileID: 268654801}
   - component: {fileID: 268654804}
   - component: {fileID: 268654803}
   - component: {fileID: 268654802}
-  - component: {fileID: 268654801}
   m_Layer: 0
-  m_Name: Main Gauche TP (Ray Interactor) (1)
+  m_Name: Main Gauche Torches (Ray Interactor) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1848,9 +1867,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 268654799}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91577169343c4154d9eac7448ad063b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 3254ce9cad62d424d86559a4f1289c4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enigmemanager: {fileID: 135150324}
   taille: 0.05
   zPos: 0.05
 --- !u!114 &268654802
@@ -3072,6 +3092,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1838579658588474, guid: 29a092a99963baa4ea9cf8a5de412734, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1841174530698158, guid: 29a092a99963baa4ea9cf8a5de412734, type: 3}
       propertyPath: m_Name
       value: Point light1
@@ -3247,7 +3271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &399025521
 Transform:
   m_ObjectHideFlags: 0
@@ -12448,14 +12472,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1094890019}
-  m_LocalRotation: {x: 0, y: -0.9550975, z: 0, w: 0.29629165}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.93, y: 0.145, z: 5.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1962483932}
   m_Father: {fileID: 0}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: -145.53, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1104080801
 GameObject:
   m_ObjectHideFlags: 0
@@ -15478,6 +15502,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resolved: 0
+  torches: []
+  order: 
+  lights: []
 --- !u!1 &1518218590
 GameObject:
   m_ObjectHideFlags: 0
@@ -15731,7 +15758,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 4294967290
+    m_Bits: 4294967282
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 0
   m_StartingSelectedInteractable: {fileID: 0}
@@ -18274,6 +18301,9 @@ MonoBehaviour:
   wallSkull: {fileID: 1229284122}
   particles: {fileID: 600383956}
   finalDoor: {fileID: 1649867199}
+  isTable: 0
+  isTorch: 0
+  isSkull: 0
 --- !u!33 &1913163637
 MeshFilter:
   m_ObjectHideFlags: 0
