@@ -13,9 +13,9 @@ public class enigmeManager : MonoBehaviour
     public GameObject particles; // pour quand wallSkull explose
     public GameObject finalDoor; // pour sortir quand on a fini toutes les énigmes :
 
-    private bool isTable = false; //enigme de la table
-    private bool isTorch = false; //énigme lumières
-    private bool isSkull = false; //énigme crâne
+    public bool isTable = false; //enigme de la table
+    public bool isTorch = false; //énigme lumières
+    public bool isSkull = false; //énigme crâne
 
     void Update()
     {
@@ -41,6 +41,6 @@ public class enigmeManager : MonoBehaviour
     private void updateEnigmas(){
         isTable = table.GetComponent<Disposition>().getGoal();
         //isTorch = torch.GetComponent<TorchInteraction>().getGoal();
-        //isSkull = diamondEye.GetComponent<MissingEye>().getGoal();
+        isSkull = diamondEye.GetComponent<InsertEye>().getGoal();
     }
 }
