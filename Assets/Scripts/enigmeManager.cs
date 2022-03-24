@@ -31,7 +31,7 @@ public class enigmeManager : MonoBehaviour
 
     void Update()
     {
-        updateEnigmas();
+        //updateEnigmas();
 
         //if (isTorch && doorStatue.activeSelf)
         //{
