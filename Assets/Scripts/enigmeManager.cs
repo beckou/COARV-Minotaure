@@ -14,10 +14,10 @@ public class enigmeManager : MonoBehaviour
     public GameObject ChestLid; // pour pouvoir ouvrir le coffre
     public GameObject finalDoor; // pour sortir quand on a fini toutes les énigmes :
 
-    private bool isTable = true; //enigme de la table
-    private bool isTorch = true; //énigme lumières
-    private bool isSkull = true; //énigme crâne
-    private bool isChest = false; // enigme de coffre
+    public bool isTable = false; //enigme de la table
+    public bool isTorch = false; //énigme lumières
+    public bool isSkull = false; //énigme crâne
+    public bool isChest = false; // enigme de coffre
 
     // Variable pour ouvrir le coffre
     private float rotationSpeed = 30f;
@@ -32,7 +32,7 @@ public class enigmeManager : MonoBehaviour
 
     void Update()
     {
-        updateEnigmas();
+        //updateEnigmas();
         if (isSkull && doorStatue.activeSelf)
         {
             // énigme de la torche réussie on ouvre la porte de la statue
