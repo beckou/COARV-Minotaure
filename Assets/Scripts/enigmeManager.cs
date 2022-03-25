@@ -32,7 +32,7 @@ public class enigmeManager : MonoBehaviour
 
     void Update()
     {
-        updateEnigmas();
+        //updateEnigmas();
         if (isSkull && doorStatue.activeSelf)
         {
             // énigme de la torche réussie on ouvre la porte de la statue
