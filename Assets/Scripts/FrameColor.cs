@@ -27,21 +27,24 @@ public class FrameColor : MonoBehaviour
         {
             goal = true;
         }
+        GameObject[] t = GameObject.FindGameObjectsWithTag("Sphere");
+        foreach (GameObject go in t)
+        {
+            go.GetComponent<Rigidbody>().isKinematic = false;
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.transform.tag == "Sphere")
+        if (other.gameObject.tag == "Sphere")
         {
             XRController manetteD = mainD.GetComponent<XRController>();
             XRController manetteG = mainG.GetComponent<XRController>();
             if (!manetteG.selectInteractionState.active && !manetteD.selectInteractionState.active)
             {
-                Transform go = GameObject.Find("Wall Arch").transform;
-                other.gameObject.transform.parent = go;
                 other.attachedRigidbody.isKinematic = true;
                 other.transform.position = gameObject.transform.TransformPoint(GetComponent<BoxCollider>().center);
-                other.transform.localScale = new Vector3(0.1f / go.localScale.x, 0.1f / go.localScale.y, 0.1f / go.localScale.z);
+                other.gameObject.tag = "FixedSphere";
             }
             GetComponent<Renderer>().material = other.gameObject.GetComponent<Renderer>().material;
         }
@@ -50,13 +53,13 @@ public class FrameColor : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
 
-        if (other.gameObject.transform.tag == "Sphere")
+        if (other.gameObject.tag == "Sphere" || other.gameObject.tag == "FixedSphere")
         {
-            XRController manetteD = mainD.GetComponent<XRController>();
-            XRController manetteG = mainG.GetComponent<XRController>();
-            if (manetteG.selectInteractionState.active || manetteD.selectInteractionState.active)
-                other.attachedRigidbody.isKinematic = false;
             GetComponent<Renderer>().material = Defaultmaterial;
+        }
+        if (other.gameObject.tag == "FixedSphere")
+        {
+            other.gameObject.tag = "Sphere";
         }
     }
 }

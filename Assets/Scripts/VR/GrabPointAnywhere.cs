@@ -40,7 +40,7 @@ public class GrabPointAnywhere : MonoBehaviour
             GameObject fils = gameObject.transform.GetChild(0).gameObject;
             Vector3 positionMainRefObjet = gameObject.transform.InverseTransformPoint(mainD.transform.position);
             Quaternion RotationMain = mainD.transform.rotation;
-            Debug.Log(positionMainRefObjet);
+            //Debug.Log(positionMainRefObjet);
             fils.transform.localPosition = positionMainRefObjet;
             fils.transform.rotation = RotationMain;
         }
@@ -49,7 +49,7 @@ public class GrabPointAnywhere : MonoBehaviour
             GameObject fils = gameObject.transform.GetChild(0).gameObject;
             Vector3 positionMainRefObjet = gameObject.transform.InverseTransformPoint(mainG.transform.position);
             Quaternion RotationMain = mainG.transform.rotation;
-            Debug.Log(positionMainRefObjet);
+            //Debug.Log(positionMainRefObjet);
             fils.transform.localPosition = positionMainRefObjet;
             fils.transform.rotation = RotationMain;
         }

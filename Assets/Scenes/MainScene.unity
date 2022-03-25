@@ -3287,7 +3287,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 15, y: 5, z: 10}
+  m_Size: {x: 10, y: 5, z: 10}
   m_Center: {x: -0.000061035156, y: 2.2904203, z: 1.4328755}
 --- !u!114 &353867217
 MonoBehaviour:
@@ -12708,7 +12708,7 @@ GameObject:
   - component: {fileID: 1001659383}
   m_Layer: 0
   m_Name: ChestSphereOrange
-  m_TagString: Sphere
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16016,9 +16016,9 @@ MonoBehaviour:
   particles: {fileID: 600383956}
   ChestLid: {fileID: 1191440923}
   finalDoor: {fileID: 1651690627}
-  isTable: 0
-  isTorch: 0
-  isSkull: 0
+  isTable: 1
+  isTorch: 1
+  isSkull: 1
   isChest: 0
 --- !u!4 &1378485690
 Transform:
@@ -17806,8 +17806,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1651690627}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.245672, y: 1.08, z: 9.226202}
-  m_LocalScale: {x: 0.38493943, y: 0.931132, z: 1}
+  m_LocalPosition: {x: 8.27, y: 1.08, z: 9.226202}
+  m_LocalScale: {x: 0.3897512, y: 0.931132, z: 1}
   m_Children:
   - {fileID: 353867211}
   m_Father: {fileID: 975324613}
@@ -17822,7 +17822,7 @@ MeshCollider:
   m_GameObject: {fileID: 1651690627}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -20332,7 +20332,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 15, y: 4.5000005, z: 10}
+  m_Size: {x: 10, y: 5, z: 10}
   m_Center: {x: 0, y: 2.2904203, z: 1.4328755}
 --- !u!114 &2090756454
 MonoBehaviour:
@@ -25209,7 +25209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2114878227}
   m_LocalRotation: {x: -1.22252e-10, y: -1, z: -0.000000059604638, w: 2.4001687e-10}
-  m_LocalPosition: {x: -0.0348, y: 0.46, z: 0.0774}
+  m_LocalPosition: {x: 2.015, y: 0.9, z: 1.277}
   m_LocalScale: {x: 0.099999994, y: 0.099999994, z: 0.10000001}
   m_Children: []
   m_Father: {fileID: 121377391}
