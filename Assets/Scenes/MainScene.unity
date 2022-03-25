@@ -18525,7 +18525,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   table: {fileID: 649620959}
   torch: {fileID: 1515860270}
-  diamondEye: {fileID: 978225054}
+  bullskull: {fileID: 0}
+  finalDoor: {fileID: 0}
 --- !u!114 &1909824079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18667,16 +18668,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909824077}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 1.39}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 6.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.08, y: 1.47}
+  m_AnchoredPosition: {x: 6.966, y: 1.078}
   m_SizeDelta: {x: 1, y: 2.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1913163633

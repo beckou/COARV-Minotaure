@@ -12,11 +12,11 @@ public class enigmeManager : MonoBehaviour
     public GameObject wallSkull; // pour pouvoir le détruire
     public GameObject particles; // pour quand wallSkull explose
     public GameObject ChestLid; // pour pouvoir ouvrir le coffre
-    public GameObject finalDoor; // pour sortir quand on a fini toutes les énigmes :
+    public GameObject finalDoor; // pour sortir quand on a fini toutes les énigmes
 
-    private bool isTable = true; //enigme de la table
-    private bool isTorch = true; //énigme lumières
-    private bool isSkull = true; //énigme crâne
+    private bool isTable = false; //enigme de la table
+    private bool isTorch = false; //énigme lumières
+    private bool isSkull = false; //énigme crâne
     private bool isChest = false; // enigme de coffre
 
     // Variable pour ouvrir le coffre
