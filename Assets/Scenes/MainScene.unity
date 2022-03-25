@@ -1227,6 +1227,7 @@ MonoBehaviour:
   torchesEnigme: {fileID: 1515860270}
   rayG: {fileID: 268654799}
   complete: 0
+  tolerance: 0.05
 --- !u!43 &137081799
 Mesh:
   m_ObjectHideFlags: 0
@@ -15501,10 +15502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e1f77ca42ec6740b9a5756c5dc55af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resolved: 0
-  torches: []
-  order: 
-  lights: []
 --- !u!1 &1518218590
 GameObject:
   m_ObjectHideFlags: 0
@@ -16678,7 +16675,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e647eca1bd5ef42a73eda7e23b620e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointer: {fileID: 2049533081}
 --- !u!81 &1657936935
 AudioListener:
   m_ObjectHideFlags: 0
