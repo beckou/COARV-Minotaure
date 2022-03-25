@@ -5,7 +5,6 @@ using UnityEngine;
 public class enigmeManager : MonoBehaviour
 {
     public GameObject table; // pour avoir référence au script énigme Disposition
-    public GameObject torch; // pour avoir référence au script énigme TorchInteraction
     public GameObject diamondEye; // pour avoir référence au script énigme MissingEye
 
     public GameObject doorStatue; // pour pouvoir l'ouvrir
@@ -20,27 +19,28 @@ public class enigmeManager : MonoBehaviour
     void Update()
     {
         updateEnigmas();
-        //if (isTorch && doorStatue.activeSelf)
-        //{
-        //    // énigme de la torche réussie on ouvre la porte de la statue
-        //    doorStatue.GetComponent<Animator>().SetTrigger("DoorATrigger");
-        //}
+        if (isSkull && doorStatue.activeSelf)
+        {
+            // énigme de la torche réussie on ouvre la porte de la statue
+            doorStatue.GetComponent<Animator>().SetTrigger("DoorATrigger");
+        }
         if (isTable && wallSkull.activeSelf)
         {
             // énigme des statues réussie, on détruit wallSkull
             wallSkull.SetActive(false);
             particles.SetActive(true);
         }
-        //if (isTable && isTorch && isSkull){
-        //    // les trois énigmes ont été réussies !
-        //    // on ouvre la porte finale
-        //    finalDoor.GetComponent<Animator>().SetTrigger("DoorATrigger");
-        //}
+        if (isTable && isTorch && isSkull)
+        {
+            // les trois énigmes ont été réussies !
+            // on ouvre la porte finale
+            finalDoor.GetComponent<Animator>().SetTrigger("DoorATrigger");
+        }
     }
 
     private void updateEnigmas(){
         isTable = table.GetComponent<Disposition>().getGoal();
-        //isTorch = torch.GetComponent<TorchInteraction>().getGoal();
+        isTorch = gameObject.GetComponent<TorchesVR>().getGoal();
         isSkull = diamondEye.GetComponent<InsertEye>().getGoal();
     }
 }

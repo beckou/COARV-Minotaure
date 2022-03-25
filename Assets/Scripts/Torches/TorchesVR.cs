@@ -8,11 +8,16 @@ public class TorchesVR : MonoBehaviour
     public GameObject torchesEnigme;
     public GameObject rayG;
     public bool complete = false;
-    public float tolerance = 0.4f;
+    public float tolerance = 0.01f;
 
     private GameObject[] torches = new GameObject[4];
     private GameObject[] tousLesTrucsADesactiver = new GameObject[8];
-    private bool[] etattorche = new bool[4];
+    [SerializeField]
+    private int[] ordreAllumage = { -1,-1,-1,-1};
+    private int indiceAllumage = 0;
+    private int[] ordreAttendu = { 0, 1, 2, 3 };
+
+    public bool getGoal() { return complete; }
 
     // Start is called before the first frame update
     void Start()
@@ -22,12 +27,12 @@ public class TorchesVR : MonoBehaviour
             torches[i] = torchesEnigme.transform.GetChild(i).gameObject;
             tousLesTrucsADesactiver[2 * i] = torches[i].transform.GetChild(0).gameObject;
             tousLesTrucsADesactiver[2 * i + 1] = torches[i].transform.GetChild(1).gameObject;
-            etattorche[i] = false;
+            
         }
         for (int i = 0; i < 4; i++)
         {
-            tousLesTrucsADesactiver[2*i].SetActive(etattorche[i]);
-            tousLesTrucsADesactiver[2*i + 1].SetActive(etattorche[i]);
+            tousLesTrucsADesactiver[2*i].SetActive(false);
+            tousLesTrucsADesactiver[2*i + 1].SetActive(false);
         }
     }
 
@@ -36,7 +41,7 @@ public class TorchesVR : MonoBehaviour
     {
         //Condition pour savoir si le rayon sort
         XRController manette = rayG.GetComponent<XRController>();
-        if (manette.selectInteractionState.active)
+        if (manette.selectInteractionState.activatedThisFrame && !complete)
         {
             //On récupère le point d'impact
             rayG.GetComponent<XRRayInteractor>().TryGetHitInfo(out Vector3 v, out Vector3 n, out int i, out bool valid);
@@ -57,15 +62,42 @@ public class TorchesVR : MonoBehaviour
                 //Produit scalaire entre les deux vecteurs pour chaque collider puis on récupère le cosinus de l'angle entre les deux vecteurs
                 float scalar = Vector3.Dot(playertov, playertoColliders[j]);
                 float cos = scalar / (Vector3.Magnitude(playertov) * Vector3.Magnitude(playertoColliders[j]));
-                Debug.Log(scalar);
 
                 //Activation ou désactivation des torches si on considère qu'on Hit
                 if (Mathf.Abs(cos - 1) < tolerance)
                 {
-                    tousLesTrucsADesactiver[2 * j].SetActive(etattorche[j]);
-                    tousLesTrucsADesactiver[2 * j + 1].SetActive(etattorche[j]);
-                    etattorche[j] = !etattorche[j];
+                    bool jInTableau = false;
+                    for (int k = 0; k < 4; k++)
+                    {
+                        if (ordreAllumage[k] == j)
+                            jInTableau = true;
+                    }
+                    if (!jInTableau)
+                    {
+                        tousLesTrucsADesactiver[2 * j].SetActive(true);
+                        tousLesTrucsADesactiver[2 * j + 1].SetActive(true);
+                        ordreAllumage[indiceAllumage] = j;
+                        indiceAllumage++;
+                    }
                 }
+            }
+        }
+        //Check de l'ordre d'allumage
+        bool fake_complete = true;
+        for (int k = 0; k < 4; k++)
+        {
+            if (ordreAllumage[k] != ordreAttendu[k])
+                fake_complete = false;
+        }
+        complete = fake_complete;
+        if (indiceAllumage >= 4 && !complete)
+        {
+            indiceAllumage = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                ordreAllumage[i] = -1;
+                tousLesTrucsADesactiver[2 * i].SetActive(false);
+                tousLesTrucsADesactiver[2 * i + 1].SetActive(false);
             }
         }
     }

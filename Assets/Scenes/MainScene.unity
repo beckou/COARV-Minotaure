@@ -1189,12 +1189,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   table: {fileID: 649620959}
-  torch: {fileID: 1515860270}
   diamondEye: {fileID: 588670864}
-  doorStatue: {fileID: 0}
+  doorStatue: {fileID: 1123758164}
   wallSkull: {fileID: 1229284122}
   particles: {fileID: 600383956}
-  finalDoor: {fileID: 0}
+  finalDoor: {fileID: 1649867199}
   isTable: 0
   isTorch: 0
   isSkull: 0
@@ -1227,7 +1226,8 @@ MonoBehaviour:
   torchesEnigme: {fileID: 1515860270}
   rayG: {fileID: 268654799}
   complete: 0
-  tolerance: 0.05
+  tolerance: 0.01
+  ordreAllumage: ffffffffffffffffffffffffffffffff
 --- !u!43 &137081799
 Mesh:
   m_ObjectHideFlags: 0
@@ -15464,7 +15464,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1515860271}
-  - component: {fileID: 1515860272}
   m_Layer: 0
   m_Name: TorchesEnigme
   m_TagString: Untagged
@@ -15490,18 +15489,6 @@ Transform:
   m_Father: {fileID: 439625575}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1515860272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1515860270}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68e1f77ca42ec6740b9a5756c5dc55af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1518218590
 GameObject:
   m_ObjectHideFlags: 0
@@ -18291,7 +18278,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   table: {fileID: 649620959}
-  torch: {fileID: 1515860270}
   diamondEye: {fileID: 978225054}
   doorStatue: {fileID: 1123758164}
   wallSkull: {fileID: 1229284122}
