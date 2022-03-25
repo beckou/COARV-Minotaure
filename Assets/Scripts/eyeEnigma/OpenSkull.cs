@@ -10,7 +10,7 @@ public class OpenSkull : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        inserted = this.gameObject.GetComponent<InsertEye>().getGoal();
+        inserted = gameObject.GetComponent<InsertEye>().getGoal();
         if (inserted)
         {
             if (angle != 30f)
