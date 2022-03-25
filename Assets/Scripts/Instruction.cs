@@ -36,7 +36,7 @@ public class Instruction : MonoBehaviour
 
         //Le temps est en secondes...
         //Les condition pour les aides
-        if (time >= 1)
+        if (time >= 120)
         {
             time = 0;
             if (!isTable)
@@ -58,7 +58,7 @@ public class Instruction : MonoBehaviour
             else if (!isChest)
             {
                 TextMeshProObject = gameObject.GetComponent<TextMeshPro>();
-                TextMeshProObject.text = "Regarde bien, il manque quelque chose la dernière porte.";
+                TextMeshProObject.text = "Regarde bien, il manque quelque chose dans la dernière porte.";
             }
         }
     }
