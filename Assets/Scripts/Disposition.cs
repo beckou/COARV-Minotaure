@@ -8,11 +8,15 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class Disposition : MonoBehaviour
 {
     private Vector3[] goalPos = new Vector3[4];
-    private GameObject[] children = new GameObject[4];
+    private GameObject[] items = new GameObject[4];
     public float tolerance = 0.08f;  //Marge d'erreur pour le placement des objets
 
     public GameObject MainD;
     public GameObject MainG;
+    public GameObject vaseGoal;
+    public GameObject discoboleGoal;
+    public GameObject swordGoal;
+    public GameObject skullGoal;
 
     [SerializeField]
     private bool goal = false;  //Réussite de l'énigme
@@ -20,16 +24,14 @@ public class Disposition : MonoBehaviour
 
     private void Start()
     {
-        goalPos[0] = new Vector3(0.3f, 0.7f, -0.2f);    //vase
-        goalPos[1] = new Vector3(0.1f, 0.7f, 0.2f);     //discobole
-        goalPos[2] = new Vector3(-0.1f, 0.7f, 0f);      //sword
-        goalPos[3] = new Vector3(-0.4f, 0.7f, 0.1f);    //skull
-
+        goalPos[0] = vaseGoal.transform.localPosition;   //vase
+        goalPos[1] = discoboleGoal.transform.localPosition;      //discobole
+        goalPos[2] = swordGoal.transform.localPosition;       //sword
+        goalPos[3] = skullGoal.transform.localPosition;     //skull
         for (int i = 0; i < 4; i++)
         {
-            children[i] = gameObject.transform.GetChild(i).gameObject;
+            items[i] = gameObject.transform.GetChild(i).gameObject;
         }
-
     }
     void Update()
     {
@@ -42,16 +44,12 @@ public class Disposition : MonoBehaviour
                 goal = true;
                 for (int i = 0; i < goalPos.Length; i++)
                 {
-                    Debug.Log((children[i].transform.localPosition - goalPos[i]).magnitude);
-                    if ((gameObject.transform.GetChild(i).localPosition - goalPos[i]).magnitude > tolerance)
+                    //Debug.Log((items[i].transform.localPosition - goalPos[i]).magnitude);
+                    if ((items[i].transform.localPosition - goalPos[i]).magnitude > tolerance)
                     {
                         goal = false;
                     }
                 }
-            }
-
-            if (goal){
-                Debug.Log("énigme table réussie !");
             }
         }
     }

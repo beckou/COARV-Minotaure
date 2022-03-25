@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scripts/Instruction.cs.meta
 guid: 87cd2435bb2e4f644af70e84956ba62b
+=======
+guid: 4cf417d73cd0cb943a3d57411d9c9381
+>>>>>>> TableInteraction:Assets/Scripts/eyeEnigma/OpenSkull.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

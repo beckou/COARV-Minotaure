@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: b79a09e47ccf44f41bd4e7d99f0ccb11
+<<<<<<< HEAD:Assets/Scripts/FrameColor.cs.meta
+guid: 8333facc7dab5cf49ba04ba84080a3f2
+=======
+guid: 3254ce9cad62d424d86559a4f1289c4e
+>>>>>>> TableInteraction:Assets/Scripts/VR/HideTPRayTorches.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

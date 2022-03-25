@@ -16,6 +16,7 @@ TagManager:
   - Point light3
   - vase
   - Sphere
+  - FixedSphere
   layers:
   - Default
   - TransparentFX

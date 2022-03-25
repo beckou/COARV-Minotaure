@@ -6,22 +6,22 @@ public class enigmeManager : MonoBehaviour
 {
     public GameObject table; // pour avoir référence au script énigme Disposition
     public GameObject torch; // pour avoir référence au script énigme TorchInteraction
-    public GameObject bullskull; // pour avoir référence au script énigme MissingEye
+    public GameObject diamondEye; // pour avoir référence au script énigme MissingEye
 
     public GameObject doorStatue; // pour pouvoir l'ouvrir
     public GameObject wallSkull; // pour pouvoir le détruire
     public GameObject particles; // pour quand wallSkull explose
     public GameObject ChestLid; // pour pouvoir ouvrir le coffre
-    public GameObject finalDoor; // pour sortir quand on a fini toutes les énigmes
+    public GameObject[] finalDoorAndSpheres; // pour sortir quand on a fini toutes les énigmes :
 
-    private bool isTable = false; //enigme de la table
-    private bool isTorch = false; //énigme lumières
-    private bool isSkull = false; //énigme crâne
-    private bool isChest = false; // enigme de coffre
+    public bool isTable = false; //enigme de la table
+    public bool isTorch = false; //énigme lumières
+    public bool isSkull = false; //énigme crâne
+    public bool isChest = false; // enigme de coffre
 
     // Variable pour ouvrir le coffre
     private float rotationSpeed = 30f;
-    private Vector3 anglerotation = new Vector3(0.0f,0.0f,0.0f);
+    private Vector3 anglerotation = new Vector3(0.0f, 0.0f, 0.0f);
     private float limitRotationX = -120f;
 
     // variable pour ouvrir la dernière porte
@@ -29,16 +29,15 @@ public class enigmeManager : MonoBehaviour
     private float positiontranslationY = 0.0f;
     private float limitTranslationY = 3.0f;
 
+
     void Update()
     {
-        //updateEnigmas();
-
-        //if (isTorch && doorStatue.activeSelf)
-        //{
-        //    // énigme de la torche réussie on ouvre la porte de la statue
-        //    doorStatue.GetComponent<Animator>().SetTrigger("DoorATrigger");
-        //}
-
+        updateEnigmas();
+        if (isSkull && doorStatue.activeSelf)
+        {
+            // énigme de la torche réussie on ouvre la porte de la statue
+            doorStatue.GetComponent<Animator>().SetTrigger("DoorATrigger");
+        }
         if (isTable && wallSkull.activeSelf)
         {
             // énigme de la table réussie, on détruit wallSkull
@@ -46,15 +45,11 @@ public class enigmeManager : MonoBehaviour
             particles.SetActive(true);
         }
 
-        if (isSkull && doorStatue.activeSelf)
+        if (isTable && isSkull && isTorch)
         {
-            // énigme du crâne réussie, on ouvre la porte de la statue pour accéeder au poème
-            doorStatue.GetComponent<Animator>().SetTrigger("DoorATrigger");
-        }
-        if (isTable && isSkull &&isTorch){
             // énigme de la table, crâne et du torche réussis
             // on ouvre le coffre avec une animation
-            if (anglerotation.x >= limitRotationX )
+            if (anglerotation.x >= limitRotationX)
             {
                 anglerotation += new Vector3(-1, 0, 0) * Time.deltaTime * rotationSpeed;
                 ChestLid.transform.localEulerAngles = anglerotation;
@@ -64,20 +59,23 @@ public class enigmeManager : MonoBehaviour
         if (isTable && isSkull && isTorch && isChest)
         {
             // on ouvre la dernière porte en la translatant vers le haut
-            if (finalDoor.transform.localPosition.y <= limitTranslationY)
+            foreach (GameObject go in finalDoorAndSpheres)
             {
-                positiontranslationY = Time.deltaTime * translationSpeed;
-                finalDoor.transform.localPosition = new Vector3(finalDoor.transform.localPosition.x, finalDoor.transform.localPosition.y + positiontranslationY, finalDoor.transform.localPosition.z);
+                if (go.transform.localPosition.y <= limitTranslationY)
+                {
+                    positiontranslationY = Time.deltaTime * translationSpeed;
+                    go.transform.localPosition = new Vector3(go.transform.localPosition.x, go.transform.localPosition.y + positiontranslationY, go.transform.localPosition.z);
+                }
             }
         }
     }
 
     private void updateEnigmas(){
-        /*isTable = table.GetComponent<Disposition>().getGoal();
-        isSkull = bullskull.GetComponent<InsertEye>().getGoal();
-        isTorch = torch.GetComponent<TorchInteraction>().getGoal();*/
-        bool isframe1 = finalDoor.transform.GetChild(0).GetChild(0).GetComponent<FrameColor>().getGoal();
-        bool isframe2 = finalDoor.transform.GetChild(0).GetChild(1).GetComponent<FrameColor>().getGoal();
+        isTable = table.GetComponent<Disposition>().getGoal();
+        isTorch = gameObject.GetComponent<TorchesVR>().getGoal();
+        isSkull = diamondEye.GetComponent<InsertEye>().getGoal();
+        bool isframe1 = finalDoorAndSpheres[0].transform.GetChild(0).GetChild(0).GetComponent<FrameColor>().getGoal();
+        bool isframe2 = finalDoorAndSpheres[0].transform.GetChild(0).GetChild(1).GetComponent<FrameColor>().getGoal();
         isChest = isframe1 && isframe2;
     }
 }
