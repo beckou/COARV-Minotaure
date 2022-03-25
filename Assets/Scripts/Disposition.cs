@@ -51,10 +51,6 @@ public class Disposition : MonoBehaviour
                     }
                 }
             }
-
-            if (goal){
-                Debug.Log("énigme table réussie !");
-            }
         }
     }
 }
