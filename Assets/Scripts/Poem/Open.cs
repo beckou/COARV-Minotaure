@@ -21,6 +21,7 @@ public class Open : MonoBehaviour
     {
         if ((col.gameObject == mainDroite || col.gameObject == mainGauche) && FirstDetect)
         {
+            gameObject.transform.GetChild(4).localPosition = new Vector3(0,0.1f,0);
             MainDetected = true;
             FirstDetect = false;
         }
@@ -36,6 +37,7 @@ public class Open : MonoBehaviour
         float time = Time.time;
         if (MainDetected && !open)
         {
+            gameObject.transform.GetChild(4).localPosition = new Vector3(0, 0.1f, 0);
             //MainDetected = false;
             if (time > time_update)
             {
