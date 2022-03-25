@@ -13,9 +13,9 @@ public class Instruction : MonoBehaviour
 
     TextMeshPro TextMeshProObject;
 
-    private bool isTable = true;
-    private bool isTorch = true;
-    private bool isSkull = true;
+    private bool isTable = false;
+    private bool isTorch = false;
+    private bool isSkull = false;
     private bool isChest = false;
 
     float time;
@@ -31,12 +31,13 @@ public class Instruction : MonoBehaviour
     void Update()
     {
         //Update enigmes
+        updateEnigmas();
         //Prendre le temps
         time += Time.deltaTime;
 
         //Le temps est en secondes...
         //Les condition pour les aides
-        if (time >= 1)
+        if (time >= 5)
         {
             time = 0;
             if (!isTable)
@@ -58,7 +59,7 @@ public class Instruction : MonoBehaviour
             else if (!isChest)
             {
                 TextMeshProObject = gameObject.GetComponent<TextMeshPro>();
-                TextMeshProObject.text = "Regarde bien, il manque quelque chose la dernière porte.";
+                TextMeshProObject.text = "Regarde bien, il manque quelque chose sur la dernière porte.";
             }
         }
     }

@@ -16,11 +16,18 @@ public class InsertEye : MonoBehaviour
     {
         if (col.gameObject == MissingEye)
         {
+            float x = FixedEye.transform.localPosition.x;
+            float y = FixedEye.transform.localPosition.y;
+            float z = FixedEye.transform.localPosition.z;
+
+            Debug.Log(FixedEye.transform.localPosition);
+
+            Vector3 posEye = new Vector3(-x, y, z);
+
             MissingEye.transform.localRotation = FixedEye.transform.localRotation;
-            MissingEye.transform.localScale = FixedEye.transform.localScale;
-            //Eye.transform.RotateAround(Relique.transform.position, Vector3.up, 180);
+            //MissingEye.transform.localScale = FixedEye.transform.localScale;
             col.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            col.gameObject.transform.position = gameObject.transform.TransformPoint(gameObject.GetComponent<SphereCollider>().center);
+            col.gameObject.transform.position = gameObject.transform.TransformPoint(posEye);
             goal = true;
             XRGrabInteractable grabEye = MissingEye.GetComponent<XRGrabInteractable>();
             grabEye.enabled = false;

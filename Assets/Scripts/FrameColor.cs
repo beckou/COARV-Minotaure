@@ -25,7 +25,10 @@ public class FrameColor : MonoBehaviour
     {
         if (GetComponent<Renderer>().material.color == MaterialSolution[0].color || GetComponent<Renderer>().material.color == MaterialSolution[1].color)
         {
-            goal = true;
+            XRController manetteD = mainD.GetComponent<XRController>();
+            XRController manetteG = mainG.GetComponent<XRController>();
+            if(!manetteD.selectInteractionState.active && !manetteG.selectInteractionState.active)
+                goal = true;
         }
         GameObject[] t = GameObject.FindGameObjectsWithTag("Sphere");
         foreach (GameObject go in t)
@@ -38,14 +41,10 @@ public class FrameColor : MonoBehaviour
     {
         if (other.gameObject.tag == "Sphere")
         {
-            XRController manetteD = mainD.GetComponent<XRController>();
-            XRController manetteG = mainG.GetComponent<XRController>();
-            if (!manetteG.selectInteractionState.active && !manetteD.selectInteractionState.active)
-            {
-                other.attachedRigidbody.isKinematic = true;
-                other.transform.position = gameObject.transform.TransformPoint(GetComponent<BoxCollider>().center);
-                other.gameObject.tag = "FixedSphere";
-            }
+            
+            other.attachedRigidbody.isKinematic = true;
+            other.transform.position = gameObject.transform.TransformPoint(GetComponent<BoxCollider>().center);
+            other.gameObject.tag = "FixedSphere";
             GetComponent<Renderer>().material = other.gameObject.GetComponent<Renderer>().material;
         }
     }
@@ -61,5 +60,6 @@ public class FrameColor : MonoBehaviour
         {
             other.gameObject.tag = "Sphere";
         }
+        goal = false;
     }
 }

@@ -11,7 +11,7 @@ public class Open : MonoBehaviour
     private bool open = false;
     private float depla = 0;
     private float pas = 0.01f;
-    private float delay = 0.05f;
+    private float delay = 0.025f;
     private float time_update = 0f;
     private bool FirstMove = true;
 
@@ -38,7 +38,7 @@ public class Open : MonoBehaviour
         if (MainDetected && !open)
         {
             gameObject.transform.GetChild(4).localPosition = new Vector3(0, 0.1f, 0);
-            //MainDetected = false;
+
             if (time > time_update)
             {
                 deplacement();

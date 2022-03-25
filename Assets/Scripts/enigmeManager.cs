@@ -12,7 +12,7 @@ public class enigmeManager : MonoBehaviour
     public GameObject wallSkull; // pour pouvoir le détruire
     public GameObject particles; // pour quand wallSkull explose
     public GameObject ChestLid; // pour pouvoir ouvrir le coffre
-    public GameObject finalDoor; // pour sortir quand on a fini toutes les énigmes :
+    public GameObject[] finalDoorAndSpheres; // pour sortir quand on a fini toutes les énigmes :
 
     public bool isTable = false; //enigme de la table
     public bool isTorch = false; //énigme lumières
@@ -32,7 +32,7 @@ public class enigmeManager : MonoBehaviour
 
     void Update()
     {
-        //updateEnigmas();
+        updateEnigmas();
         if (isSkull && doorStatue.activeSelf)
         {
             // énigme de la torche réussie on ouvre la porte de la statue
@@ -59,10 +59,13 @@ public class enigmeManager : MonoBehaviour
         if (isTable && isSkull && isTorch && isChest)
         {
             // on ouvre la dernière porte en la translatant vers le haut
-            if (finalDoor.transform.localPosition.y <= limitTranslationY)
+            foreach (GameObject go in finalDoorAndSpheres)
             {
-                positiontranslationY = Time.deltaTime * translationSpeed;
-                finalDoor.transform.localPosition = new Vector3(finalDoor.transform.localPosition.x, finalDoor.transform.localPosition.y + positiontranslationY, finalDoor.transform.localPosition.z);
+                if (go.transform.localPosition.y <= limitTranslationY)
+                {
+                    positiontranslationY = Time.deltaTime * translationSpeed;
+                    go.transform.localPosition = new Vector3(go.transform.localPosition.x, go.transform.localPosition.y + positiontranslationY, go.transform.localPosition.z);
+                }
             }
         }
     }
@@ -71,8 +74,8 @@ public class enigmeManager : MonoBehaviour
         isTable = table.GetComponent<Disposition>().getGoal();
         isTorch = gameObject.GetComponent<TorchesVR>().getGoal();
         isSkull = diamondEye.GetComponent<InsertEye>().getGoal();
-        bool isframe1 = finalDoor.transform.GetChild(0).GetChild(0).GetComponent<FrameColor>().getGoal();
-        bool isframe2 = finalDoor.transform.GetChild(0).GetChild(1).GetComponent<FrameColor>().getGoal();
+        bool isframe1 = finalDoorAndSpheres[0].transform.GetChild(0).GetChild(0).GetComponent<FrameColor>().getGoal();
+        bool isframe2 = finalDoorAndSpheres[0].transform.GetChild(0).GetChild(1).GetComponent<FrameColor>().getGoal();
         isChest = isframe1 && isframe2;
     }
 }
