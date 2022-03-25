@@ -66,7 +66,7 @@ public class Instruction : MonoBehaviour
     private void updateEnigmas()
     {
         isTable = table.GetComponent<Disposition>().getGoal();
-        isTorch = torch.GetComponent<TorchInteraction>().getGoal();
+        isTorch = torch.GetComponent<TorchesVR>().getGoal();
         isSkull = bullskull.GetComponent<InsertEye>();
         bool isframe1 = finalDoor.transform.GetChild(0).GetChild(0).GetComponent<FrameColor>().getGoal();
         bool isframe2 = finalDoor.transform.GetChild(0).GetChild(1).GetComponent<FrameColor>().getGoal();
