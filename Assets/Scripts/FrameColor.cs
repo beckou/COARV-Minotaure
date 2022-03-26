@@ -6,10 +6,13 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class FrameColor : MonoBehaviour
 {
     public Material[] MaterialSolution; // Ajouter les materiel qui résout l'énigme
+    public GameObject PortalPlane;
     public GameObject mainD;
     public GameObject mainG;
 
-    private Material Defaultmaterial;
+    private Material FrameDefaultmaterial;
+    private Color PortalDefaultmaterialColor;
+    private float Intensity;
     [SerializeField]
     private bool goal;  //Réussite de l'énigme
     public bool getGoal() { return goal; }
@@ -17,7 +20,9 @@ public class FrameColor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Defaultmaterial = GetComponent<Renderer>().material;
+        Intensity = 8;
+        FrameDefaultmaterial = GetComponent<Renderer>().material;
+        PortalDefaultmaterialColor = PortalPlane.GetComponent<MeshRenderer>().sharedMaterial.GetColor("_PortalColor");
     }
 
     // Update is called once per frame
@@ -46,6 +51,7 @@ public class FrameColor : MonoBehaviour
             other.transform.position = gameObject.transform.TransformPoint(GetComponent<BoxCollider>().center);
             other.gameObject.tag = "FixedSphere";
             GetComponent<Renderer>().material = other.gameObject.GetComponent<Renderer>().material;
+            PortalPlane.GetComponent<MeshRenderer>().sharedMaterial.SetColor("_PortalColor", other.gameObject.GetComponent<Renderer>().material.color * Intensity);
         }
     }
 
@@ -54,7 +60,8 @@ public class FrameColor : MonoBehaviour
 
         if (other.gameObject.tag == "Sphere" || other.gameObject.tag == "FixedSphere")
         {
-            GetComponent<Renderer>().material = Defaultmaterial;
+            GetComponent<Renderer>().material = FrameDefaultmaterial;
+            PortalPlane.GetComponent<MeshRenderer>().sharedMaterial.SetVector("_PortalColor", PortalDefaultmaterialColor);
         }
         if (other.gameObject.tag == "FixedSphere")
         {
