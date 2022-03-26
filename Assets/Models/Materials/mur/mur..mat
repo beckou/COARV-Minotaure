@@ -19,6 +19,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture:
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -146,6 +150,9 @@ Material:
     m_Ints: []
     m_Floats:
     - Boolean_8A2B8817: 1
+    - Dissolve_amount: 2
+    - Portal_Strength: 2.5
+    - Speed_Protal: 0.5
     - Vector1_97FAD25D: 1
     - Vector1_C8A76A0C: 1
     - _AlphaClip: 0
@@ -209,6 +216,7 @@ Material:
     - _Color: {r: 1, g: 0.9800222, b: 0.9575472, a: 1}
     - _EmissionColor: {r: 0.1014151, g: 0.09902323, b: 0.09902323, a: 1}
     - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
+    - _PortalColor: {r: 6.422232, g: 5.749747, b: 0.7061093, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _UvOffset: {r: 0, g: 0, b: 0, a: 0}
     - _UvTiling: {r: 1, g: 1, b: 0, a: 0}
