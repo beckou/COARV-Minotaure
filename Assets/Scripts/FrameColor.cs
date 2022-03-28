@@ -39,6 +39,8 @@ public class FrameColor : MonoBehaviour
         foreach (GameObject go in t)
         {
             go.GetComponent<Rigidbody>().isKinematic = false;
+            go.GetComponent<Rigidbody>().useGravity = true;
+
         }
     }
 
@@ -48,6 +50,7 @@ public class FrameColor : MonoBehaviour
         {
             
             other.attachedRigidbody.isKinematic = true;
+            other.attachedRigidbody.useGravity = false;
             other.transform.position = gameObject.transform.TransformPoint(GetComponent<BoxCollider>().center);
             other.gameObject.tag = "FixedSphere";
             GetComponent<Renderer>().material = other.gameObject.GetComponent<Renderer>().material;

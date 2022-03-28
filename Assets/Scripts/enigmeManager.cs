@@ -29,10 +29,13 @@ public class enigmeManager : MonoBehaviour
     private float positiontranslationY = 0.0f;
     private float limitTranslationY = 3.0f;
 
+    bool recuperated = false;
+    float pos_init = 0f;
+    float decalage;
 
     void Update()
     {
-        //updateEnigmas();
+        updateEnigmas();
         if (isSkull && doorStatue.activeSelf)
         {
             // énigme de la torche réussie on ouvre la porte de la statue
@@ -58,11 +61,16 @@ public class enigmeManager : MonoBehaviour
         }
         if (isTable && isSkull && isTorch && isChest)
         {
+            
             // on ouvre la dernière porte en la translatant vers le haut
             foreach (GameObject go in finalDoorAndSpheres)
             {
-                if (go.transform.localPosition.y <= limitTranslationY)
+                if (positiontranslationY <= limitTranslationY)
                 {
+                    if (go.tag == "Fixed Sphere")
+                    {
+                        go.SetActive(false);
+                    }
                     positiontranslationY = Time.deltaTime * translationSpeed;
                     go.transform.localPosition = new Vector3(go.transform.localPosition.x, go.transform.localPosition.y + positiontranslationY, go.transform.localPosition.z);
                 }
