@@ -50,11 +50,6 @@
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/select",
-      "type": "boolean",
-      "requirement": "mandatory"
-    },
-    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },
@@ -126,6 +121,10 @@
     {
       "controller_type": "vive_cosmos_controller",
       "binding_url": "bindings_vive_cosmos_controller.json"
+    },
+    {
+      "controller_type": "logitech_stylus",
+      "binding_url": "bindings_logitech_stylus.json"
     },
     {
       "controller_type": "vive_cosmos",
